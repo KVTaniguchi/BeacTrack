@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C763A8871856964900ED458D /* satellite2_sending_signal-32.png in Resources */ = {isa = PBXBuildFile; fileRef = C763A8861856964900ED458D /* satellite2_sending_signal-32.png */; };
+		C763A8891856966B00ED458D /* gps_searching-32.png in Resources */ = {isa = PBXBuildFile; fileRef = C763A8881856966B00ED458D /* gps_searching-32.png */; };
 		C78D1FC01854DEFE00E61CB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */; };
 		C78D1FC21854DEFE00E61CB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */; };
 		C78D1FC41854DEFE00E61CB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC31854DEFE00E61CB6 /* UIKit.framework */; };
@@ -21,6 +23,11 @@
 		C78D1FE11854DEFE00E61CB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC31854DEFE00E61CB6 /* UIKit.framework */; };
 		C78D1FE91854DEFE00E61CB6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C78D1FE71854DEFE00E61CB6 /* InfoPlist.strings */; };
 		C78D1FEB1854DEFE00E61CB6 /* iBeaconLabTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D1FEA1854DEFE00E61CB6 /* iBeaconLabTests.m */; };
+		C78D1FF91854E25800E61CB6 /* TrackBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D1FF81854E25800E61CB6 /* TrackBeacon.m */; };
+		C78D1FFC1854E34500E61CB6 /* TransmitBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */; };
+		C78D1FFE1854E4DF00E61CB6 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */; };
+		C78D20001854E4E600E61CB6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */; };
+		C7FAC1C218575F120003CC11 /* BeaconChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FAC1C118575F120003CC11 /* BeaconChecker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C763A8861856964900ED458D /* satellite2_sending_signal-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "satellite2_sending_signal-32.png"; sourceTree = "<group>"; };
+		C763A8881856966B00ED458D /* gps_searching-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gps_searching-32.png"; sourceTree = "<group>"; };
 		C78D1FBC1854DEFE00E61CB6 /* iBeaconLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +62,14 @@
 		C78D1FE61854DEFE00E61CB6 /* iBeaconLabTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iBeaconLabTests-Info.plist"; sourceTree = "<group>"; };
 		C78D1FE81854DEFE00E61CB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C78D1FEA1854DEFE00E61CB6 /* iBeaconLabTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iBeaconLabTests.m; sourceTree = "<group>"; };
+		C78D1FF71854E25800E61CB6 /* TrackBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackBeacon.h; sourceTree = "<group>"; };
+		C78D1FF81854E25800E61CB6 /* TrackBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackBeacon.m; sourceTree = "<group>"; };
+		C78D1FFA1854E34500E61CB6 /* TransmitBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransmitBeacon.h; sourceTree = "<group>"; };
+		C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransmitBeacon.m; sourceTree = "<group>"; };
+		C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C7FAC1C018575F120003CC11 /* BeaconChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconChecker.h; sourceTree = "<group>"; };
+		C7FAC1C118575F120003CC11 /* BeaconChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconChecker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C78D20001854E4E600E61CB6 /* CoreLocation.framework in Frameworks */,
+				C78D1FFE1854E4DF00E61CB6 /* CoreBluetooth.framework in Frameworks */,
 				C78D1FC21854DEFE00E61CB6 /* CoreGraphics.framework in Frameworks */,
 				C78D1FC41854DEFE00E61CB6 /* UIKit.framework in Frameworks */,
 				C78D1FC01854DEFE00E61CB6 /* Foundation.framework in Frameworks */,
@@ -101,6 +120,8 @@
 		C78D1FBE1854DEFE00E61CB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */,
+				C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */,
 				C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */,
 				C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */,
 				C78D1FC31854DEFE00E61CB6 /* UIKit.framework */,
@@ -119,6 +140,13 @@
 				C78D1FD51854DEFE00E61CB6 /* ViewController.m */,
 				C78D1FD71854DEFE00E61CB6 /* Images.xcassets */,
 				C78D1FC61854DEFE00E61CB6 /* Supporting Files */,
+				C78D1FF71854E25800E61CB6 /* TrackBeacon.h */,
+				C78D1FF81854E25800E61CB6 /* TrackBeacon.m */,
+				C78D1FFA1854E34500E61CB6 /* TransmitBeacon.h */,
+				C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */,
+				C763A8881856966B00ED458D /* gps_searching-32.png */,
+				C7FAC1C018575F120003CC11 /* BeaconChecker.h */,
+				C7FAC1C118575F120003CC11 /* BeaconChecker.m */,
 			);
 			path = iBeaconLab;
 			sourceTree = "<group>";
@@ -126,6 +154,7 @@
 		C78D1FC61854DEFE00E61CB6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C763A8861856964900ED458D /* satellite2_sending_signal-32.png */,
 				C78D1FC71854DEFE00E61CB6 /* iBeaconLab-Info.plist */,
 				C78D1FC81854DEFE00E61CB6 /* InfoPlist.strings */,
 				C78D1FCB1854DEFE00E61CB6 /* main.m */,
@@ -228,8 +257,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C763A8871856964900ED458D /* satellite2_sending_signal-32.png in Resources */,
 				C78D1FD81854DEFE00E61CB6 /* Images.xcassets in Resources */,
 				C78D1FCA1854DEFE00E61CB6 /* InfoPlist.strings in Resources */,
+				C763A8891856966B00ED458D /* gps_searching-32.png in Resources */,
 				C78D1FD31854DEFE00E61CB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +281,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C78D1FD61854DEFE00E61CB6 /* ViewController.m in Sources */,
+				C7FAC1C218575F120003CC11 /* BeaconChecker.m in Sources */,
+				C78D1FF91854E25800E61CB6 /* TrackBeacon.m in Sources */,
+				C78D1FFC1854E34500E61CB6 /* TransmitBeacon.m in Sources */,
 				C78D1FD01854DEFE00E61CB6 /* AppDelegate.m in Sources */,
 				C78D1FCC1854DEFE00E61CB6 /* main.m in Sources */,
 			);
@@ -460,6 +494,7 @@
 				C78D1FF01854DEFE00E61CB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C78D1FF11854DEFE00E61CB6 /* Build configuration list for PBXNativeTarget "iBeaconLabTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +503,7 @@
 				C78D1FF31854DEFE00E61CB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
