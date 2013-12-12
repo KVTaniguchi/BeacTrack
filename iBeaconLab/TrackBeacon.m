@@ -22,8 +22,8 @@
 //    NSSet *setOfUniquePeripheralUUIDs;
 //    NSSet *setOfUniquePeripheralNames;
 //    NSUUID *peripheralUUID;
-    CLBeaconRegion *regionToCheck;
-    NSMutableArray *beaconsFound;
+//    CLBeaconRegion *regionToCheck;
+//    NSMutableArray *beaconsFound;
 }
 @end
 
@@ -38,18 +38,21 @@
 //    peripheralNamesArray = [NSMutableArray arrayWithObjects:nil];
 //    centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
     self.locationManager = [[CLLocationManager alloc]init];
+    self.locationManager.delegate = self;
     [self initRegion];
     
     [self locationManager:self.locationManager didStartMonitoringForRegion:self.beaconRegion];
 }
 
 -(void)initRegion{
-    NSUUID *u = [[NSUUID alloc]initWithUUIDString:@"0C369138-C602-4B9A-A80C-E15FEA4DE3A2"];
     
-    self.beaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:u major:1 minor:1 identifier:@"Apple AirLocate"];
+    NSLog(@"Init region called");
+    NSUUID *u = [[NSUUID alloc]initWithUUIDString:@"77D65832-5F60-4423-837A-13868B97AB35"];
+    
+    self.beaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:u major:1 minor:1 identifier:@"Front AAVAA"];
     
     [self.locationManager startMonitoringForRegion:self.beaconRegion];
-    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+//    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region{

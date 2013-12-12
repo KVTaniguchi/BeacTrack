@@ -27,7 +27,6 @@
 		C78D1FFC1854E34500E61CB6 /* TransmitBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */; };
 		C78D1FFE1854E4DF00E61CB6 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */; };
 		C78D20001854E4E600E61CB6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */; };
-		C7FAC1C218575F120003CC11 /* BeaconChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FAC1C118575F120003CC11 /* BeaconChecker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,8 +67,6 @@
 		C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransmitBeacon.m; sourceTree = "<group>"; };
 		C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		C7FAC1C018575F120003CC11 /* BeaconChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconChecker.h; sourceTree = "<group>"; };
-		C7FAC1C118575F120003CC11 /* BeaconChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconChecker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,8 +142,6 @@
 				C78D1FFA1854E34500E61CB6 /* TransmitBeacon.h */,
 				C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */,
 				C763A8881856966B00ED458D /* gps_searching-32.png */,
-				C7FAC1C018575F120003CC11 /* BeaconChecker.h */,
-				C7FAC1C118575F120003CC11 /* BeaconChecker.m */,
 			);
 			path = iBeaconLab;
 			sourceTree = "<group>";
@@ -281,7 +276,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C78D1FD61854DEFE00E61CB6 /* ViewController.m in Sources */,
-				C7FAC1C218575F120003CC11 /* BeaconChecker.m in Sources */,
 				C78D1FF91854E25800E61CB6 /* TrackBeacon.m in Sources */,
 				C78D1FFC1854E34500E61CB6 /* TransmitBeacon.m in Sources */,
 				C78D1FD01854DEFE00E61CB6 /* AppDelegate.m in Sources */,
