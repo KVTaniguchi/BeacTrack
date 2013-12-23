@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7215D7918654AC80061279A /* UUIDString.m in Sources */ = {isa = PBXBuildFile; fileRef = C7215D7818654AC80061279A /* UUIDString.m */; };
 		C763A8871856964900ED458D /* satellite2_sending_signal-32.png in Resources */ = {isa = PBXBuildFile; fileRef = C763A8861856964900ED458D /* satellite2_sending_signal-32.png */; };
 		C763A8891856966B00ED458D /* gps_searching-32.png in Resources */ = {isa = PBXBuildFile; fileRef = C763A8881856966B00ED458D /* gps_searching-32.png */; };
+		C78A81C618628C51007088FD /* HorizontalScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = C78A81C518628C51007088FD /* HorizontalScroller.m */; };
+		C78A81CA1863C94B007088FD /* UUIDStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C78A81C91863C94B007088FD /* UUIDStore.m */; };
+		C78A81D11863DACB007088FD /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78A81CF1863DACB007088FD /* TableViewController.m */; };
+		C78A81D21863DACB007088FD /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78A81D01863DACB007088FD /* TableViewController.xib */; };
 		C78D1FC01854DEFE00E61CB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */; };
 		C78D1FC21854DEFE00E61CB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */; };
 		C78D1FC41854DEFE00E61CB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC31854DEFE00E61CB6 /* UIKit.framework */; };
@@ -27,6 +32,9 @@
 		C78D1FFC1854E34500E61CB6 /* TransmitBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */; };
 		C78D1FFE1854E4DF00E61CB6 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */; };
 		C78D20001854E4E600E61CB6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */; };
+		C7DE99CB185D64E5000E3754 /* location-32.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DE99CA185D64E5000E3754 /* location-32.png */; };
+		C7DE99CD185D64F0000E3754 /* location-25.png in Resources */ = {isa = PBXBuildFile; fileRef = C7DE99CC185D64F0000E3754 /* location-25.png */; };
+		C7ECAB35185FEF1800FE3758 /* iphone-25.png in Resources */ = {isa = PBXBuildFile; fileRef = C7ECAB34185FEF1800FE3758 /* iphone-25.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +48,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C7215D7718654AC80061279A /* UUIDString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUIDString.h; sourceTree = "<group>"; };
+		C7215D7818654AC80061279A /* UUIDString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUIDString.m; sourceTree = "<group>"; };
 		C763A8861856964900ED458D /* satellite2_sending_signal-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "satellite2_sending_signal-32.png"; sourceTree = "<group>"; };
 		C763A8881856966B00ED458D /* gps_searching-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gps_searching-32.png"; sourceTree = "<group>"; };
+		C78A81C418628C51007088FD /* HorizontalScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalScroller.h; sourceTree = "<group>"; };
+		C78A81C518628C51007088FD /* HorizontalScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalScroller.m; sourceTree = "<group>"; };
+		C78A81C81863C94B007088FD /* UUIDStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUIDStore.h; sourceTree = "<group>"; };
+		C78A81C91863C94B007088FD /* UUIDStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUIDStore.m; sourceTree = "<group>"; };
+		C78A81CE1863DACB007088FD /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		C78A81CF1863DACB007088FD /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		C78A81D01863DACB007088FD /* TableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
 		C78D1FBC1854DEFE00E61CB6 /* iBeaconLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -67,6 +84,10 @@
 		C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransmitBeacon.m; sourceTree = "<group>"; };
 		C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C7DE99CA185D64E5000E3754 /* location-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-32.png"; sourceTree = "<group>"; };
+		C7DE99CC185D64F0000E3754 /* location-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-25.png"; sourceTree = "<group>"; };
+		C7ECAB33185E8C7900FE3758 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C7ECAB34185FEF1800FE3758 /* iphone-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-25.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +116,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C74F9FF71862867600CD1A2A /* SideScrolling */ = {
+			isa = PBXGroup;
+			children = (
+				C78A81C418628C51007088FD /* HorizontalScroller.h */,
+				C78A81C518628C51007088FD /* HorizontalScroller.m */,
+			);
+			name = SideScrolling;
+			sourceTree = "<group>";
+		};
+		C78A81C71863B863007088FD /* ViewController objects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "ViewController objects";
+			sourceTree = "<group>";
+		};
 		C78D1FB31854DEFE00E61CB6 = {
 			isa = PBXGroup;
 			children = (
@@ -130,11 +167,13 @@
 		C78D1FC51854DEFE00E61CB6 /* iBeaconLab */ = {
 			isa = PBXGroup;
 			children = (
+				C74F9FF71862867600CD1A2A /* SideScrolling */,
 				C78D1FCE1854DEFE00E61CB6 /* AppDelegate.h */,
 				C78D1FCF1854DEFE00E61CB6 /* AppDelegate.m */,
 				C78D1FD11854DEFE00E61CB6 /* Main.storyboard */,
 				C78D1FD41854DEFE00E61CB6 /* ViewController.h */,
 				C78D1FD51854DEFE00E61CB6 /* ViewController.m */,
+				C78A81C71863B863007088FD /* ViewController objects */,
 				C78D1FD71854DEFE00E61CB6 /* Images.xcassets */,
 				C78D1FC61854DEFE00E61CB6 /* Supporting Files */,
 				C78D1FF71854E25800E61CB6 /* TrackBeacon.h */,
@@ -142,6 +181,14 @@
 				C78D1FFA1854E34500E61CB6 /* TransmitBeacon.h */,
 				C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */,
 				C763A8881856966B00ED458D /* gps_searching-32.png */,
+				C7ECAB33185E8C7900FE3758 /* Constants.h */,
+				C78A81C81863C94B007088FD /* UUIDStore.h */,
+				C78A81C91863C94B007088FD /* UUIDStore.m */,
+				C7215D7718654AC80061279A /* UUIDString.h */,
+				C7215D7818654AC80061279A /* UUIDString.m */,
+				C78A81CE1863DACB007088FD /* TableViewController.h */,
+				C78A81CF1863DACB007088FD /* TableViewController.m */,
+				C78A81D01863DACB007088FD /* TableViewController.xib */,
 			);
 			path = iBeaconLab;
 			sourceTree = "<group>";
@@ -149,6 +196,9 @@
 		C78D1FC61854DEFE00E61CB6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C7ECAB34185FEF1800FE3758 /* iphone-25.png */,
+				C7DE99CA185D64E5000E3754 /* location-32.png */,
+				C7DE99CC185D64F0000E3754 /* location-25.png */,
 				C763A8861856964900ED458D /* satellite2_sending_signal-32.png */,
 				C78D1FC71854DEFE00E61CB6 /* iBeaconLab-Info.plist */,
 				C78D1FC81854DEFE00E61CB6 /* InfoPlist.strings */,
@@ -253,10 +303,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C763A8871856964900ED458D /* satellite2_sending_signal-32.png in Resources */,
+				C7DE99CB185D64E5000E3754 /* location-32.png in Resources */,
 				C78D1FD81854DEFE00E61CB6 /* Images.xcassets in Resources */,
+				C7DE99CD185D64F0000E3754 /* location-25.png in Resources */,
 				C78D1FCA1854DEFE00E61CB6 /* InfoPlist.strings in Resources */,
 				C763A8891856966B00ED458D /* gps_searching-32.png in Resources */,
+				C78A81D21863DACB007088FD /* TableViewController.xib in Resources */,
 				C78D1FD31854DEFE00E61CB6 /* Main.storyboard in Resources */,
+				C7ECAB35185FEF1800FE3758 /* iphone-25.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,10 +330,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C78D1FD61854DEFE00E61CB6 /* ViewController.m in Sources */,
+				C78A81CA1863C94B007088FD /* UUIDStore.m in Sources */,
 				C78D1FF91854E25800E61CB6 /* TrackBeacon.m in Sources */,
+				C78A81D11863DACB007088FD /* TableViewController.m in Sources */,
 				C78D1FFC1854E34500E61CB6 /* TransmitBeacon.m in Sources */,
 				C78D1FD01854DEFE00E61CB6 /* AppDelegate.m in Sources */,
 				C78D1FCC1854DEFE00E61CB6 /* main.m in Sources */,
+				C7215D7918654AC80061279A /* UUIDString.m in Sources */,
+				C78A81C618628C51007088FD /* HorizontalScroller.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

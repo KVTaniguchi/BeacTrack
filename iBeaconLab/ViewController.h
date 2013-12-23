@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UUIDStore.h"
+#import "TableViewController.h"
+#import "UUIDString.h"
 
-@interface ViewController : UIViewController
+@import CoreBluetooth;
+
+@interface ViewController : UIViewController <CBCentralManagerDelegate, UITableViewDelegate>
+{
+    TableViewController *tableVC;
+    UUIDString *newString;
+}
+@property (strong, nonatomic) CBCentralManager *centralManager;
+@property (strong, nonatomic) CBPeripheral *discoveredPeripheral;
+@property (strong, nonatomic) NSMutableData *peripheralData;
+@property (strong, nonatomic) IBOutlet UITextField *UUIDTextField;
+- (IBAction)TrackBeaconButtonPress:(id)sender;
 
 @end
