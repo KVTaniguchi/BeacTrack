@@ -10,6 +10,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <CoreLocation/CoreLocation.h>
 
+
 @interface TransmitBeacon : UIViewController <CBPeripheralManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *MajorLabel;

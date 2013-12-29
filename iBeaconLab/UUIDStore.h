@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "UUIDString.h"
+@import CoreBluetooth;
 
 @interface UUIDStore : NSObject
 {
@@ -17,4 +18,5 @@
 +(UUIDStore*)sharedStore;
 -(NSMutableSet*)allUUIDsSet;
 -(UUIDString*)createNewUUIDstring;
+-(CBPeripheral*)addNewPeripheral:(CBPeripheral*)peripheral;
 @end

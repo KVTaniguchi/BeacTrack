@@ -17,10 +17,10 @@
 {
     TableViewController *tableVC;
     UUIDString *newString;
+    CBPeripheral *newPeripheral;
 }
 @property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) CBPeripheral *discoveredPeripheral;
-@property (strong, nonatomic) NSMutableData *peripheralData;
 @property (strong, nonatomic) IBOutlet UITextField *UUIDTextField;
 - (IBAction)TrackBeaconButtonPress:(id)sender;
 

@@ -9,16 +9,20 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+
 @import QuartzCore;
 
 @interface TrackBeacon : UIViewController <CLLocationManagerDelegate> //CBCentralManagerDelegate>
+{
 
+}
 @property (strong, nonatomic) IBOutlet UILabel *beaconFoundLabel;
 @property (strong, nonatomic) IBOutlet UILabel *proxUUIDLabel;
 @property (strong, nonatomic) IBOutlet UILabel *transmitMajorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *transmitMinorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *transmitDistanceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *transmitRSSILabel;
+@property (strong, nonatomic) IBOutlet UILabel *noBeaconFoundLabel;
 
 
 @property (strong, nonatomic) CLBeaconRegion *beaconRegion;    // define the beacons we're looking for

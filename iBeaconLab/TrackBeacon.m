@@ -7,21 +7,34 @@
 //
 
 /*
+    GOAL: POLISH THIS APP
+ 
     Next - do what the API is meant to do - trigger events in the app based on what
     add a back panel for the beacon data to sit on
+ 
+    Indicate when a peripheral isn't a beacon with a big alert flash and movement back to other screen with a countdown or user swipe arrow
+ 
+    put the beacon data on a layer - will that layer only appear inside its super layer?
+ 
+    indicate when the peripherial being tested is NOT a beacon - big arrow to swipe back, reload in a few seconds
+    
+    display  flashing text showing close near or far
 */
 
 #import "TrackBeacon.h"
 
-
 @interface TrackBeacon ()
 {
     CALayer *beaconInfoLayer;
+    
+    CALayer *arrowLayer;
+    
     CATextLayer *beaconTextLayer;
-    CAShapeLayer *immediateLayer;
+    CAShapeLayer *immediateLayer;   // change to far setting
     CAShapeLayer *nearLayer;
-    CAShapeLayer *farLayer;
+    CAShapeLayer *farLayer;         // change to immediate setting
     CAShapeLayer *unknownLayer;
+    CGRect fullRect;
     CGRect layerRect;
     CGRect nearRect;
     CGRect immediateRect;
@@ -38,7 +51,7 @@
 
 @implementation TrackBeacon
 
-@synthesize beaconRegion, beaconFoundLabel, proxUUIDLabel, transmitMinorLabel, transmitDistanceLabel, transmitMajorLabel, transmitRSSILabel, locationManager, selectedUUID;
+@synthesize beaconRegion, beaconFoundLabel, proxUUIDLabel, transmitMinorLabel, transmitDistanceLabel, transmitMajorLabel, transmitRSSILabel, locationManager, selectedUUID, noBeaconFoundLabel;
 
 -(id)init{
     self = [super init];
@@ -52,9 +65,13 @@
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
     if(!self.selectedUUID){
-    self.selectedUUID = @"0C369138-C602-4B9A-A80C-E15FEA4DE3A2";
+        self.selectedUUID = @"0C369138-C602-4B9A-A80C-E15FEA4DE3A2";
     }
+    
     [[self.navigationController navigationBar]setBarStyle:UIBarStyleBlackTranslucent];
+    
+    self.noBeaconFoundLabel.text = @"";
+    
     [self initRegion];
     [self addLayer];
 }
@@ -79,9 +96,10 @@
 }
 
 -(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region{
-//    NSLog(@"Location Manager found %lu beacons", (unsigned long)[beacons count]);
     CLBeacon *beacon = [[CLBeacon alloc]init];
     beacon = [beacons lastObject];
+    
+    if(beacon != NULL){
     if ([beacons count] == 1) {
         self.beaconFoundLabel.text = [NSString stringWithFormat:@"%lu beacon", (unsigned long)[beacons count]];
     }
@@ -103,7 +121,16 @@
         self.transmitDistanceLabel.text = @"far";
     }
     self.transmitRSSILabel.text = [NSString stringWithFormat:@"%li", (long)beacon.rssi];
-    
+    }
+    else if (beacon.major == NULL) {
+        [self.proxUUIDLabel setHidden:YES];
+        [self.transmitDistanceLabel setHidden:YES];
+        [self.transmitMajorLabel setHidden:YES];
+        [self.transmitMinorLabel setHidden:YES];
+        [self.transmitRSSILabel setHidden:YES];
+        [self.beaconFoundLabel setHidden:YES];
+        [self.noBeaconFoundLabel setText:@"Not a Beacon, slide back"];
+    }
     [self updateDrawing:beacon];
     
     [self.locationManager stopMonitoringForRegion:region];
@@ -121,15 +148,19 @@
     cgFar = [farColor CGColor];
     
     CGRect frame = [self.view frame];
+    fullRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     layerRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 1.9);
+    CGRect beaconInfoRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 3);
     CGPoint bottomLeft = CGPointMake(self.view.center.x, CGRectGetMaxY(frame) - (layerRect.size.height / 2));
-    CGPoint topLeft = CGPointMake(self.view.center.x, CGRectGetMinY(frame) - (layerRect.size.height/2));
     
-    [beaconInfoLayer setBounds:layerRect];
-    [beaconInfoLayer setShadowColor:cgFar];
-    [beaconInfoLayer setFrame:layerRect];
-    [beaconInfoLayer setBackgroundColor:cgFar];
-    [beaconInfoLayer setPosition:topLeft];
+    
+    beaconInfoLayer = [CALayer layer];
+    beaconInfoLayer.backgroundColor = [[UIColor lightGrayColor]CGColor];
+    beaconInfoLayer.frame = CGRectInset(beaconInfoRect, 30, 30);
+    [beaconInfoLayer setPosition:CGPointMake(self.view.center.x, CGRectGetMinY(frame) + (layerRect.size.height / 2))];
+    [beaconInfoLayer setOpacity:0.1];
+    [self.view.layer addSublayer:beaconInfoLayer];
+    
     
     UIBezierPath *farPath = [UIBezierPath bezierPathWithOvalInRect:layerRect];
     farLayer = [CAShapeLayer layer];
@@ -159,7 +190,7 @@
 
 -(void)updateDrawing:(CLBeacon*)beacon{
     // add glow effect
-    if (beacon.proximity == CLProximityImmediate) {
+    if (beacon.proximity == CLProximityFar) {
         [self glowEffect:immediateLayer withRect:immediateRect ];
         [immediateLayer setFillColor:[[UIColor grayColor]CGColor]];
         [nearLayer setFillColor:cgBlack];
@@ -173,7 +204,7 @@
         [farLayer setFillColor:cgBlack];
         [self removeAnimations:immediateLayer secondLayer:farLayer];
     } else
-    if (beacon.proximity == CLProximityFar) {
+    if (beacon.proximity == CLProximityImmediate) {
         [self glowEffect:farLayer withRect:layerRect];
         [farLayer setFillColor:cgFar];
         [nearLayer setFillColor:cgFar];

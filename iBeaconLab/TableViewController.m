@@ -4,7 +4,7 @@
 //
 //  Created by Kevin Taniguchi on 12/19/13.
 //  Copyright (c) 2013 Taniguchi. All rights reserved.
-//
+//  TO DO - subclass the cell to show that
 
 #import "TableViewController.h"
 
@@ -13,14 +13,18 @@
 @end
 
 @implementation TableViewController
-
+{
+    UIFont *textLabelFont;
+    UIFont *detailLabelFont;
+}
 @synthesize selectedUUID;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        textLabelFont = [UIFont fontWithName:@"Arial" size:35];
+        detailLabelFont = [UIFont fontWithName:@"Helvetica" size:30];
     }
     return self;
 }
@@ -30,11 +34,6 @@
     [super viewDidLoad];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
 
@@ -53,30 +52,53 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
     }
     NSSet *passingSet = [[UUIDStore sharedStore]allUUIDsSet];
     NSArray *passingArray = [NSArray arrayWithArray:[passingSet allObjects]];
-    UUIDString *uuidstring = [passingArray objectAtIndex:[indexPath row]];
-    NSString *string = [NSString stringWithFormat:@"%@", uuidstring.text];
-    NSString *shorterString = [string substringFromIndex:([string length]-4)];
+    
+    CBPeripheral *peripheral = [passingArray objectAtIndex:[indexPath row]];
+    
+    NSString *peripheralUUIDString = [NSString stringWithFormat:@"%@", peripheral.identifier.UUIDString];
+    NSString *shorterString = [peripheralUUIDString substringFromIndex:([peripheralUUIDString length]-4)];
+    
     [[cell textLabel]setText:shorterString];
     [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
+    cell.textLabel.font = textLabelFont;
+    
+    [[cell detailTextLabel]setText:peripheral.name];
+    cell.detailTextLabel.font = detailLabelFont;
+    [cell.detailTextLabel setTextAlignment:NSTextAlignmentCenter];
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
+}
+
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0.01;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;
 }
 
 #pragma mark - Table view delegate
 
-//// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSSet *uuidStringsSet = [[UUIDStore sharedStore]allUUIDsSet];
-    NSArray *uuidStringArray = [NSArray arrayWithArray:[uuidStringsSet allObjects]];
-    UUIDString *stringToPush = [uuidStringArray objectAtIndex:[indexPath row]];
-    self.selectedUUID = [NSString stringWithFormat:@"%@", stringToPush.text];
+    NSSet *peripheralSet = [[UUIDStore sharedStore]allUUIDsSet];
+    NSArray *peripheralArray = [NSArray arrayWithArray:[peripheralSet allObjects]];
+    CBPeripheral *peripheralToPush = [peripheralArray objectAtIndex:[indexPath row]];
+    self.selectedUUID = [NSString stringWithFormat:@"%@", peripheralToPush.identifier.UUIDString];
+    
     TrackBeacon *tbvc = [[self.navigationController storyboard]instantiateViewControllerWithIdentifier:@"TrackBeaconVC"];
     tbvc.selectedUUID = [NSString stringWithString:self.selectedUUID];
     [self.navigationController pushViewController:tbvc animated:YES];
 }
 
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
 @end

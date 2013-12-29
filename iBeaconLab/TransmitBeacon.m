@@ -20,7 +20,7 @@
     
     _myUUID = [[UIDevice currentDevice]identifierForVendor];
     
-    self.beaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:_myUUID major:1 minor:1 identifier:@"com.Taniguchi.myRegion"];
+    self.beaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:_myUUID major:1 minor:1 identifier:[[UIDevice currentDevice]name]];
     
     NSLog(@"my uuid is: %@",_myUUID.UUIDString);
     

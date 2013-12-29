@@ -5,32 +5,32 @@
 //  Created by Kevin Taniguchi on 12/8/13.
 //  Copyright (c) 2013 Taniguchi. All rights reserved.
 //
-
+/*
+    
+*/
 #import "ViewController.h"
 #import "TrackBeacon.h"
 
 @interface ViewController ()
 {
     NSUUID *grabbedUUID;
-    int grabbedUUIDindex;
-    NSMutableArray *peripherals;  // grabbed periperals put in here
     NSMutableSet *setOfUniquePeriperals;
 }
 @end
 
 @implementation ViewController
 
-@synthesize centralManager, peripheralData, discoveredPeripheral;
+@synthesize centralManager, discoveredPeripheral;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    grabbedUUIDindex = 0;
-    peripherals = [NSMutableArray arrayWithObjects:nil];
     setOfUniquePeriperals = [NSMutableSet setWithObjects:nil];
     self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
+    
     tableVC = [[TableViewController alloc]initWithNibName:@"TableViewController" bundle:nil];
-    [tableVC.view setFrame:CGRectMake(0, 210, self.view.frame.size.width, 200)];
+    [tableVC.view setFrame:CGRectMake(0, 215, self.view.frame.size.width, 240)];
+    tableVC.view.backgroundColor = [UIColor clearColor];
     [self addChildViewController:tableVC];
     [self.view addSubview:tableVC.view];
 }
@@ -86,25 +86,19 @@
 }
 
 -(void)centralManagerDidUpdateState:(CBCentralManager *)central{
-    
     if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
-        NSLog(@"Core bluetooth powered on");
+        [self.centralManager scanForPeripheralsWithServices:nil options:nil];
     }
     else {
         return;
     }
-    if(self.centralManager){
-        NSLog(@"central manager created");
-    }
-    [self.centralManager scanForPeripheralsWithServices:nil options:nil];
 }
-// peripherals are loaded from here
+
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
     NSLog(@"Found peripherial with UUID: %@ and name: %@",[NSString stringWithFormat:@"%@", peripheral.identifier.UUIDString], peripheral.name);
     if([setOfUniquePeriperals containsObject:peripheral] == NO){
         [setOfUniquePeriperals addObject:peripheral];
-        newString = [[UUIDStore sharedStore]createNewUUIDstring];
-        newString.text = [NSString stringWithFormat:@"%@", peripheral.identifier.UUIDString];
+        newPeripheral = [[UUIDStore sharedStore]addNewPeripheral:peripheral];
         [self reloadTable];
     }
 }

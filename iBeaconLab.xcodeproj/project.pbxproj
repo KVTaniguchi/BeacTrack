@@ -86,7 +86,6 @@
 		C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C7DE99CA185D64E5000E3754 /* location-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-32.png"; sourceTree = "<group>"; };
 		C7DE99CC185D64F0000E3754 /* location-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-25.png"; sourceTree = "<group>"; };
-		C7ECAB33185E8C7900FE3758 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C7ECAB34185FEF1800FE3758 /* iphone-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iphone-25.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,13 +124,6 @@
 			name = SideScrolling;
 			sourceTree = "<group>";
 		};
-		C78A81C71863B863007088FD /* ViewController objects */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "ViewController objects";
-			sourceTree = "<group>";
-		};
 		C78D1FB31854DEFE00E61CB6 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +131,7 @@
 				C78D1FE41854DEFE00E61CB6 /* iBeaconLabTests */,
 				C78D1FBE1854DEFE00E61CB6 /* Frameworks */,
 				C78D1FBD1854DEFE00E61CB6 /* Products */,
+				C78D1FC61854DEFE00E61CB6 /* Supporting Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,15 +166,10 @@
 				C78D1FD11854DEFE00E61CB6 /* Main.storyboard */,
 				C78D1FD41854DEFE00E61CB6 /* ViewController.h */,
 				C78D1FD51854DEFE00E61CB6 /* ViewController.m */,
-				C78A81C71863B863007088FD /* ViewController objects */,
-				C78D1FD71854DEFE00E61CB6 /* Images.xcassets */,
-				C78D1FC61854DEFE00E61CB6 /* Supporting Files */,
 				C78D1FF71854E25800E61CB6 /* TrackBeacon.h */,
 				C78D1FF81854E25800E61CB6 /* TrackBeacon.m */,
 				C78D1FFA1854E34500E61CB6 /* TransmitBeacon.h */,
 				C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */,
-				C763A8881856966B00ED458D /* gps_searching-32.png */,
-				C7ECAB33185E8C7900FE3758 /* Constants.h */,
 				C78A81C81863C94B007088FD /* UUIDStore.h */,
 				C78A81C91863C94B007088FD /* UUIDStore.m */,
 				C7215D7718654AC80061279A /* UUIDString.h */,
@@ -189,6 +177,7 @@
 				C78A81CE1863DACB007088FD /* TableViewController.h */,
 				C78A81CF1863DACB007088FD /* TableViewController.m */,
 				C78A81D01863DACB007088FD /* TableViewController.xib */,
+				C78D1FD71854DEFE00E61CB6 /* Images.xcassets */,
 			);
 			path = iBeaconLab;
 			sourceTree = "<group>";
@@ -196,6 +185,7 @@
 		C78D1FC61854DEFE00E61CB6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C763A8881856966B00ED458D /* gps_searching-32.png */,
 				C7ECAB34185FEF1800FE3758 /* iphone-25.png */,
 				C7DE99CA185D64E5000E3754 /* location-32.png */,
 				C7DE99CC185D64F0000E3754 /* location-25.png */,
@@ -206,6 +196,7 @@
 				C78D1FCD1854DEFE00E61CB6 /* iBeaconLab-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = iBeaconLab;
 			sourceTree = "<group>";
 		};
 		C78D1FE41854DEFE00E61CB6 /* iBeaconLabTests */ = {
