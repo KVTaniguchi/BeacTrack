@@ -29,7 +29,7 @@
     self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
     
     tableVC = [[TableViewController alloc]initWithNibName:@"TableViewController" bundle:nil];
-    [tableVC.view setFrame:CGRectMake(0, 215, self.view.frame.size.width, 240)];
+    [tableVC.view setFrame:CGRectMake(0, 200, self.view.frame.size.width, 260)];
     tableVC.view.backgroundColor = [UIColor clearColor];
     [self addChildViewController:tableVC];
     [self.view addSubview:tableVC.view];
@@ -95,7 +95,6 @@
 }
 
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
-    NSLog(@"Found peripherial with UUID: %@ and name: %@",[NSString stringWithFormat:@"%@", peripheral.identifier.UUIDString], peripheral.name);
     if([setOfUniquePeriperals containsObject:peripheral] == NO){
         [setOfUniquePeriperals addObject:peripheral];
         newPeripheral = [[UUIDStore sharedStore]addNewPeripheral:peripheral];

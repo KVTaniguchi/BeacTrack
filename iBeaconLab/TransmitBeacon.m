@@ -22,8 +22,6 @@
     
     self.beaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:_myUUID major:1 minor:1 identifier:[[UIDevice currentDevice]name]];
     
-    NSLog(@"my uuid is: %@",_myUUID.UUIDString);
-    
 }
 
 - (IBAction)transmitButtonPressed:(id)sender {
@@ -34,11 +32,11 @@
 
 -(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
     if(peripheral.state == CBPeripheralManagerStatePoweredOn){
-        NSLog(@"Powered On");
+
         [self.peripheralManager startAdvertising:self.beaconPeripheralData];
     }
     else if (peripheral.state == CBPeripheralManagerStatePoweredOff){
-        NSLog(@"Powered Off");
+
         [self.peripheralManager stopAdvertising];
     }
 }

@@ -14,8 +14,6 @@
 
 @implementation TableViewController
 {
-    UIFont *textLabelFont;
-    UIFont *detailLabelFont;
 }
 @synthesize selectedUUID;
 
@@ -23,8 +21,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        textLabelFont = [UIFont fontWithName:@"Arial" size:35];
-        detailLabelFont = [UIFont fontWithName:@"Helvetica" size:30];
     }
     return self;
 }
@@ -32,8 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification
+                                              object:self];
 }
 
+-(void)preferredContentSizeChanged:(NSNotification*)notif{
+    [self.tableView reloadData];
+}
 
 #pragma mark - Table view data source
 
@@ -64,10 +65,12 @@
     
     [[cell textLabel]setText:shorterString];
     [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
-    cell.textLabel.font = textLabelFont;
+
+
+    cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
     [[cell detailTextLabel]setText:peripheral.name];
-    cell.detailTextLabel.font = detailLabelFont;
+    cell.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [cell.detailTextLabel setTextAlignment:NSTextAlignmentCenter];
     [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;

@@ -62,6 +62,21 @@
 {
     NSLog(@"selectedUUID is %@", selectedUUID);
     [super viewDidLoad];
+    
+    [self.beaconFoundLabel setHidden:YES];
+    [self.transmitDistanceLabel setHidden:YES];
+    [self.transmitRSSILabel setHidden:YES];
+    [self.proxUUIDLabel setHidden:YES];
+    [self.transmitMajorLabel setHidden:YES];
+    [self.transmitMinorLabel setHidden:YES];
+    
+    self.beaconFoundLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.transmitMinorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.transmitMajorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.transmitRSSILabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    [self.proxUUIDLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    
     self.locationManager = [[CLLocationManager alloc]init];
     self.locationManager.delegate = self;
     if(!self.selectedUUID){
@@ -74,6 +89,17 @@
     
     [self initRegion];
     [self addLayer];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification object:nil];
+}
+
+-(void)preferredContentSizeChanged:(NSNotification*)notification{
+    self.beaconFoundLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.transmitMinorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.transmitMajorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.transmitRSSILabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    [self.proxUUIDLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
 
@@ -100,6 +126,14 @@
     beacon = [beacons lastObject];
     
     if(beacon != NULL){
+        [self.beaconFoundLabel setHidden:NO];
+        [self.transmitDistanceLabel setHidden:NO];
+        [self.transmitRSSILabel setHidden:NO];
+        [self.proxUUIDLabel setHidden:NO];
+        [self.transmitMajorLabel setHidden:NO];
+        [self.transmitMinorLabel setHidden:NO];
+        [self.noBeaconFoundLabel setHidden:YES];
+
     if ([beacons count] == 1) {
         self.beaconFoundLabel.text = [NSString stringWithFormat:@"%lu beacon", (unsigned long)[beacons count]];
     }
@@ -122,7 +156,7 @@
     }
     self.transmitRSSILabel.text = [NSString stringWithFormat:@"%li", (long)beacon.rssi];
     }
-    else if (beacon.major == NULL) {
+    else if (beacon == NULL) {
         [self.proxUUIDLabel setHidden:YES];
         [self.transmitDistanceLabel setHidden:YES];
         [self.transmitMajorLabel setHidden:YES];
@@ -242,8 +276,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
-
 
 @end
