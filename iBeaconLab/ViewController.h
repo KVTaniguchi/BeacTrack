@@ -13,7 +13,7 @@
 
 @import CoreBluetooth;
 
-@interface ViewController : UIViewController <CBCentralManagerDelegate, UITableViewDelegate>
+@interface ViewController : UIViewController <CBCentralManagerDelegate, UITableViewDelegate, UITextFieldDelegate>
 {
     TableViewController *tableVC;
     UUIDString *newString;

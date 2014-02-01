@@ -9,17 +9,17 @@
 /*
     GOAL: POLISH THIS APP
  
-    Next - do what the API is meant to do - trigger events in the app based on what
-    add a back panel for the beacon data to sit on
+ Merge the two view controllers 
  
-    Indicate when a peripheral isn't a beacon with a big alert flash and movement back to other screen with a countdown or user swipe arrow
+ here's the mechanism - 
  
-    put the beacon data on a layer - will that layer only appear inside its super layer?
+ need to break out the signal finders into their own classes - the iBeacon finder and the Peripheral Finder
  
-    indicate when the peripherial being tested is NOT a beacon - big arrow to swipe back, reload in a few seconds
-    
-    display  flashing text showing close near or far
-*/
+1)  create new classes - iBeacon confirmer and Peripheral Finder
+2)  create a View controller class that brings the two together and synchronizes them
+3)  
+ */
+
 
 #import "TrackBeacon.h"
 
@@ -253,7 +253,6 @@
         [nearLayer removeAllAnimations];
         [farLayer removeAllAnimations];
     }
-    
 }
 
 -(void)glowEffect:(CALayer*)layer withRect:(CGRect)rect{

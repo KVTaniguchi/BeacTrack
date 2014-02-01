@@ -16,13 +16,6 @@
 
 @synthesize TransmitIdentityLabel, TransmitUUIDLabel, MajorLabel, MinorLabel, beaconRegion, beaconPeripheralData, peripheralManager;
 
--(void)initBeacon{
-    
-    _myUUID = [[UIDevice currentDevice]identifierForVendor];
-    
-    self.beaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:_myUUID major:1 minor:1 identifier:[[UIDevice currentDevice]name]];
-    
-}
 
 - (IBAction)transmitButtonPressed:(id)sender {
     self.beaconPeripheralData = [self.beaconRegion peripheralDataWithMeasuredPower:nil];
@@ -30,45 +23,34 @@
     self.peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil options:nil];
 }
 
--(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
-    if(peripheral.state == CBPeripheralManagerStatePoweredOn){
+-(void)startTransmitting{
+    _myUUID = [[UIDevice currentDevice]identifierForVendor];
+    
+    self.beaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:_myUUID major:1 minor:1 identifier:[[UIDevice currentDevice]name]];
+    
+    self.beaconPeripheralData = [self.beaconRegion peripheralDataWithMeasuredPower:nil];
+    
+    self.peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil options:nil];
+    [self setLabels];
+}
 
+-(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
+    NSLog(@"peripheral manager did updatestate");
+    if(peripheral.state == CBPeripheralManagerStatePoweredOn){
         [self.peripheralManager startAdvertising:self.beaconPeripheralData];
     }
     else if (peripheral.state == CBPeripheralManagerStatePoweredOff){
-
         [self.peripheralManager stopAdvertising];
     }
 }
 
 -(void)setLabels{
-    MajorLabel.text = [NSString stringWithFormat:@"%@", self.beaconRegion.major];
-    MinorLabel.text = [NSString stringWithFormat:@"%@", self.beaconRegion.minor];
-    TransmitUUIDLabel.text = self.beaconRegion.proximityUUID.UUIDString;
-    TransmitIdentityLabel.text = self.beaconRegion.identifier;
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    [self initBeacon];
-    [self setLabels];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSLog(@"set labels called");
+    self.MajorLabel.text = [NSString stringWithFormat:@"%@", self.beaconRegion.major];
+    self.MinorLabel.text = [NSString stringWithFormat:@"%@", self.beaconRegion.minor];
+    self.TransmitUUIDLabel.text = self.beaconRegion.proximityUUID.UUIDString;
+    self.TransmitIdentityLabel.text = self.beaconRegion.identifier;
+    NSLog(@"transmit major %@", self.MajorLabel.text);
 }
 
 @end

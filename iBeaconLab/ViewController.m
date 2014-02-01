@@ -20,14 +20,13 @@
 
 @implementation ViewController
 
-@synthesize centralManager, discoveredPeripheral;
+@synthesize centralManager, discoveredPeripheral, UUIDTextField;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     setOfUniquePeriperals = [NSMutableSet setWithObjects:nil];
     self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
-    
     tableVC = [[TableViewController alloc]initWithNibName:@"TableViewController" bundle:nil];
     [tableVC.view setFrame:CGRectMake(0, 200, self.view.frame.size.width, 260)];
     tableVC.view.backgroundColor = [UIColor clearColor];
@@ -58,6 +57,15 @@
     [self.UUIDTextField resignFirstResponder];
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.UUIDTextField resignFirstResponder];
+    return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    [self resignFirstResponder];
+}
+
 - (IBAction)TrackBeaconButtonPress:(id)sender {
     [self.centralManager stopScan];
 }
@@ -76,11 +84,11 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"pushTrackBeacon"]) {
-        if([_UUIDTextField.text length]< 2){
-            _UUIDTextField.text = [NSString stringWithString:tableVC.selectedUUID];
+        if([self.UUIDTextField.text length]< 2){
+            self.UUIDTextField.text = [NSString stringWithString:tableVC.selectedUUID];
         }
         TrackBeacon *beaconTracker = [segue destinationViewController];
-        beaconTracker.selectedUUID = _UUIDTextField.text;
+        beaconTracker.selectedUUID = self.UUIDTextField.text;
     }
     [self.centralManager stopScan];
 }
@@ -95,7 +103,9 @@
 }
 
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
+    NSLog(@"Found peripheral: %@", peripheral.description);
     if([setOfUniquePeriperals containsObject:peripheral] == NO){
+        NSLog(@"Added Unique Peripheral: %@", peripheral.description);
         [setOfUniquePeriperals addObject:peripheral];
         newPeripheral = [[UUIDStore sharedStore]addNewPeripheral:peripheral];
         [self reloadTable];

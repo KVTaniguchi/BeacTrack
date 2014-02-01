@@ -11,18 +11,17 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface TransmitBeacon : UIViewController <CBPeripheralManagerDelegate>
+@interface TransmitBeacon : NSObject <CBPeripheralManagerDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *MajorLabel;
-@property (strong, nonatomic) IBOutlet UILabel *MinorLabel;
-@property (strong, nonatomic) IBOutlet UILabel *TransmitUUIDLabel;
-@property (strong, nonatomic) IBOutlet UILabel *TransmitIdentityLabel;
-
+@property (strong, nonatomic) UILabel *MajorLabel;
+@property (strong, nonatomic) UILabel *MinorLabel;
+@property (strong, nonatomic) UILabel *TransmitUUIDLabel;
+@property (strong, nonatomic) UILabel *TransmitIdentityLabel;
 
 @property (nonatomic, strong) CLBeaconRegion *beaconRegion;
 @property (nonatomic, strong) NSDictionary *beaconPeripheralData;
 @property (nonatomic, strong) CBPeripheralManager *peripheralManager;
 
 - (IBAction)transmitButtonPressed:(id)sender;
-
+-(void)startTransmitting;
 @end
