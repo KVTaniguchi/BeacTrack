@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UUIDStore.h"
+#import "PeripheralStore.h"
 #import "TableViewController.h"
 #import "UUIDString.h"
 
@@ -22,6 +22,5 @@
 @property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) CBPeripheral *discoveredPeripheral;
 @property (strong, nonatomic) IBOutlet UITextField *UUIDTextField;
-- (IBAction)TrackBeaconButtonPress:(id)sender;
 
 @end

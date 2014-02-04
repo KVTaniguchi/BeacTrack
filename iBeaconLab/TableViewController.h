@@ -1,5 +1,5 @@
 //
-//  TableViewController.h
+//  TableViewController.h/Users/KVTANIGUCHI/Dropbox/Apps/Commercial/BeacTrack/iBeaconLab/TableViewController.h
 //  iBeaconLab
 //
 //  Created by Kevin Taniguchi on 12/19/13.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UUIDStore.h"
-#import "TrackBeacon.h"
+#import "PeripheralStore.h"
 
 @interface TableViewController : UITableViewController
 @property (nonatomic, strong) NSString *selectedUUID;

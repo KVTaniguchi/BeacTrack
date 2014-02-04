@@ -3,19 +3,19 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "BeacTrack Icon58.png",
-      "scale" : "2x"
-    },
-    {
-      "size" : "60x60",
-      "idiom" : "iphone",
-      "filename" : "BeacTrack Icon120.png",
+      "filename" : "BeacTracIcon4 (58).png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "BeacTrack Icon80.png",
+      "filename" : "BeacTracIcon4 (80).png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "BeacTracIcon4 (120).png",
       "scale" : "2x"
     }
   ],

@@ -17,19 +17,21 @@
 }
 @synthesize selectedUUID;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-    }
+-(id)init{
+    self = [super initWithStyle:UITableViewStylePlain];
     return self;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor clearColor]];
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(preferredContentSizeChanged:) name:UIContentSizeCategoryDidChangeNotification
                                               object:self];
+    self.tableView.dataSource = self;
+    [self.tableView.tableHeaderView setBackgroundColor:[UIColor clearColor]];
+    [self.tableView reloadData];
 }
 
 -(void)preferredContentSizeChanged:(NSNotification*)notif{
@@ -45,7 +47,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[UUIDStore sharedStore]allUUIDsSet]count];
+    return [[[PeripheralStore sharedStore]allPeripheralsSet]count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -55,7 +57,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
     }
-    NSSet *passingSet = [[UUIDStore sharedStore]allUUIDsSet];
+    NSSet *passingSet = [[PeripheralStore sharedStore]allPeripheralsSet];
     NSArray *passingArray = [NSArray arrayWithArray:[passingSet allObjects]];
     
     CBPeripheral *peripheral = [passingArray objectAtIndex:[indexPath row]];
@@ -66,39 +68,34 @@
     [[cell textLabel]setText:shorterString];
     [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
 
-
+    cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     
     [[cell detailTextLabel]setText:peripheral.name];
     cell.detailTextLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [cell.detailTextLabel setTextAlignment:NSTextAlignmentCenter];
-    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
 }
 
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 10)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 10)];
+    [label setFont:[UIFont fontWithName:@"ArialMT" size:10]];
+    NSString *headerLabelText = @"Peripherals";
+    [label setText:headerLabelText];
+    [label setTextColor:[UIColor whiteColor]];
+    [headerView setBackgroundColor:[UIColor clearColor]];
+    [headerView addSubview:label];
+    return headerView;
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 0.01;
+    return 10;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.01;
 }
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSSet *peripheralSet = [[UUIDStore sharedStore]allUUIDsSet];
-    NSArray *peripheralArray = [NSArray arrayWithArray:[peripheralSet allObjects]];
-    CBPeripheral *peripheralToPush = [peripheralArray objectAtIndex:[indexPath row]];
-    self.selectedUUID = [NSString stringWithFormat:@"%@", peripheralToPush.identifier.UUIDString];
-    
-    TrackBeacon *tbvc = [[self.navigationController storyboard]instantiateViewControllerWithIdentifier:@"TrackBeaconVC"];
-    tbvc.selectedUUID = [NSString stringWithString:self.selectedUUID];
-    [self.navigationController pushViewController:tbvc animated:YES];
-}
-
 
 - (void)didReceiveMemoryWarning
 {

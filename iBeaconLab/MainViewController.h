@@ -11,15 +11,18 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <QuartzCore/QuartzCore.h>
 #import "DrawingView.h"
-#import "TransmitBeacon.h"
+#import "TableViewController.h"
+#import "PeripheralStore.h"
+#import "UUIDString.h"
 
-@interface MainViewController : UIViewController <CLLocationManagerDelegate, CBCentralManagerDelegate, CBPeripheralManagerDelegate>
+@interface MainViewController : UIViewController <CLLocationManagerDelegate, CBCentralManagerDelegate, CBPeripheralManagerDelegate, UITableViewDelegate>
 {
     NSString *newUUIDString;
     CBPeripheral *newPeripheral;
     NSUUID *grabbedUUID;
     NSMutableSet *setOfUniquePeriperals;
     DrawingView *drawingView;
+    TableViewController *tvc;
 }
 @property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) CBPeripheral *discoveredPeripheral;
@@ -30,20 +33,20 @@
 @property (strong, nonatomic) CLBeacon *foundBeacon;
 
 -(void)startiBeaconConfirmerWithUUIDString:(NSString*)passedInUUIDString;
-@property (strong, nonatomic) IBOutlet UILabel *beaconStatusLabel;
 @property BOOL findingBeacon;
 
 -(void)glowEffect:(CALayer*)layer withRect:(CGRect)rect;
-
-@property (strong, nonatomic) IBOutlet UILabel *proxUUIDLabel;
-@property (strong, nonatomic) IBOutlet UILabel *transmitMajorLabel;
-@property (strong, nonatomic) IBOutlet UILabel *transmitMinorLabel;
+@property (strong, nonatomic) IBOutlet UILabel *beaconStatusLabel;
+@property (strong, nonatomic) IBOutlet UILabel *retrievedUUIDLabel;
+@property (strong, nonatomic) IBOutlet UILabel *retrievedbroadcastMajorLabel;
+@property (strong, nonatomic) IBOutlet UILabel *retrievedbroadcastMinorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *transmitDistanceLabel;
-@property (strong, nonatomic) IBOutlet UILabel *transmitRSSILabel;
+@property (strong, nonatomic) IBOutlet UILabel *retrievedRSSILabel;
 
-@property (strong, nonatomic) IBOutlet UILabel *MajorLabel;
-@property (strong, nonatomic) IBOutlet UILabel *MinorLabel;
-@property (strong, nonatomic) IBOutlet UILabel *TransmitUUIDLabel;
-@property (strong, nonatomic) IBOutlet UILabel *TransmitIdentityLabel;
+@property (strong, nonatomic) IBOutlet UILabel *broadcastMajorLabel;
+@property (strong, nonatomic) IBOutlet UILabel *broadcastMinorLabel;
+@property (strong, nonatomic) IBOutlet UILabel *broadcastUUIDLabel;
+@property (strong, nonatomic) IBOutlet UILabel *broadcastIdentityLabel;
+@property (strong, nonatomic) IBOutlet UILabel *transmittingAsLabel;
 
 @end

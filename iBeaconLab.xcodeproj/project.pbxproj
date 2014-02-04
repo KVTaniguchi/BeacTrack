@@ -9,15 +9,10 @@
 /* Begin PBXBuildFile section */
 		C7215D7918654AC80061279A /* UUIDString.m in Sources */ = {isa = PBXBuildFile; fileRef = C7215D7818654AC80061279A /* UUIDString.m */; };
 		C726DF5418751E150049FA9F /* BeacTrackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C726DF5318751E150049FA9F /* BeacTrackTest.m */; };
-		C726DF58187525050049FA9F /* BeacTrack Icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = C726DF55187525050049FA9F /* BeacTrack Icon58.png */; };
-		C726DF59187525050049FA9F /* BeacTrack Icon80.png in Resources */ = {isa = PBXBuildFile; fileRef = C726DF56187525050049FA9F /* BeacTrack Icon80.png */; };
-		C726DF5A187525050049FA9F /* BeacTrack Icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = C726DF57187525050049FA9F /* BeacTrack Icon120.png */; };
 		C726DF5F187534480049FA9F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C726DF5E187534480049FA9F /* Default-568h@2x.png */; };
 		C7603B111899E85900321E0D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7603B101899E85900321E0D /* MainViewController.m */; };
-		C7603B18189A1B2F00321E0D /* AnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7603B17189A1B2F00321E0D /* AnimationViewController.m */; };
-		C78A81CA1863C94B007088FD /* UUIDStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C78A81C91863C94B007088FD /* UUIDStore.m */; };
+		C78A81CA1863C94B007088FD /* PeripheralStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C78A81C91863C94B007088FD /* PeripheralStore.m */; };
 		C78A81D11863DACB007088FD /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78A81CF1863DACB007088FD /* TableViewController.m */; };
-		C78A81D21863DACB007088FD /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C78A81D01863DACB007088FD /* TableViewController.xib */; };
 		C78D1FC01854DEFE00E61CB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */; };
 		C78D1FC21854DEFE00E61CB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */; };
 		C78D1FC41854DEFE00E61CB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC31854DEFE00E61CB6 /* UIKit.framework */; };
@@ -31,11 +26,15 @@
 		C78D1FE01854DEFE00E61CB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */; };
 		C78D1FE11854DEFE00E61CB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC31854DEFE00E61CB6 /* UIKit.framework */; };
 		C78D1FE91854DEFE00E61CB6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C78D1FE71854DEFE00E61CB6 /* InfoPlist.strings */; };
-		C78D1FF91854E25800E61CB6 /* TrackBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D1FF81854E25800E61CB6 /* TrackBeacon.m */; };
-		C78D1FFC1854E34500E61CB6 /* TransmitBeacon.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */; };
 		C78D1FFE1854E4DF00E61CB6 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */; };
 		C78D20001854E4E600E61CB6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */; };
+		C78E0CF1189EA2DB00C754FE /* ReceivedBeaconDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78E0CF0189EA2DB00C754FE /* ReceivedBeaconDataTableViewController.m */; };
 		C790ECCA189AC51E00929953 /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C790ECC9189AC51E00929953 /* DrawingView.m */; };
+		C7EC58B1189DCDF9001D2220 /* BeacTracIcon4 (120).png in Resources */ = {isa = PBXBuildFile; fileRef = C7EC58AE189DCDF9001D2220 /* BeacTracIcon4 (120).png */; };
+		C7EC58B2189DCDF9001D2220 /* BeacTracIcon4 (80).png in Resources */ = {isa = PBXBuildFile; fileRef = C7EC58AF189DCDF9001D2220 /* BeacTracIcon4 (80).png */; };
+		C7EC58B3189DCDF9001D2220 /* BeacTracIcon4 (58).png in Resources */ = {isa = PBXBuildFile; fileRef = C7EC58B0189DCDF9001D2220 /* BeacTracIcon4 (58).png */; };
+		C7EC58B5189DE35F001D2220 /* 2014-02-01 21.01.08.png in Resources */ = {isa = PBXBuildFile; fileRef = C7EC58B4189DE35F001D2220 /* 2014-02-01 21.01.08.png */; };
+		C7EC58B7189DFAD8001D2220 /* loading640960.png in Resources */ = {isa = PBXBuildFile; fileRef = C7EC58B6189DFAD8001D2220 /* loading640960.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,21 +51,15 @@
 		C7215D7718654AC80061279A /* UUIDString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUIDString.h; sourceTree = "<group>"; };
 		C7215D7818654AC80061279A /* UUIDString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUIDString.m; sourceTree = "<group>"; };
 		C726DF5318751E150049FA9F /* BeacTrackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeacTrackTest.m; sourceTree = "<group>"; };
-		C726DF55187525050049FA9F /* BeacTrack Icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTrack Icon58.png"; sourceTree = "<group>"; };
-		C726DF56187525050049FA9F /* BeacTrack Icon80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTrack Icon80.png"; sourceTree = "<group>"; };
-		C726DF57187525050049FA9F /* BeacTrack Icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTrack Icon120.png"; sourceTree = "<group>"; };
 		C726DF5C187534290049FA9F /* BeacTrack Icon6401136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTrack Icon6401136.png"; sourceTree = "<group>"; };
 		C726DF5D187534390049FA9F /* BeacTrack Icon640960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTrack Icon640960.png"; sourceTree = "<group>"; };
 		C726DF5E187534480049FA9F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C7603B0F1899E85900321E0D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C7603B101899E85900321E0D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		C7603B16189A1B2F00321E0D /* AnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationViewController.h; sourceTree = "<group>"; };
-		C7603B17189A1B2F00321E0D /* AnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationViewController.m; sourceTree = "<group>"; };
-		C78A81C81863C94B007088FD /* UUIDStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUIDStore.h; sourceTree = "<group>"; };
-		C78A81C91863C94B007088FD /* UUIDStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUIDStore.m; sourceTree = "<group>"; };
+		C78A81C81863C94B007088FD /* PeripheralStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeripheralStore.h; sourceTree = "<group>"; };
+		C78A81C91863C94B007088FD /* PeripheralStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralStore.m; sourceTree = "<group>"; };
 		C78A81CE1863DACB007088FD /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		C78A81CF1863DACB007088FD /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
-		C78A81D01863DACB007088FD /* TableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
 		C78D1FBC1854DEFE00E61CB6 /* iBeaconLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,14 +77,17 @@
 		C78D1FDE1854DEFE00E61CB6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C78D1FE61854DEFE00E61CB6 /* iBeaconLabTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iBeaconLabTests-Info.plist"; sourceTree = "<group>"; };
 		C78D1FE81854DEFE00E61CB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C78D1FF71854E25800E61CB6 /* TrackBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackBeacon.h; sourceTree = "<group>"; };
-		C78D1FF81854E25800E61CB6 /* TrackBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackBeacon.m; sourceTree = "<group>"; };
-		C78D1FFA1854E34500E61CB6 /* TransmitBeacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransmitBeacon.h; sourceTree = "<group>"; };
-		C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransmitBeacon.m; sourceTree = "<group>"; };
 		C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C78E0CEF189EA2DB00C754FE /* ReceivedBeaconDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReceivedBeaconDataTableViewController.h; sourceTree = "<group>"; };
+		C78E0CF0189EA2DB00C754FE /* ReceivedBeaconDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceivedBeaconDataTableViewController.m; sourceTree = "<group>"; };
 		C790ECC8189AC51E00929953 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
 		C790ECC9189AC51E00929953 /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
+		C7EC58AE189DCDF9001D2220 /* BeacTracIcon4 (120).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTracIcon4 (120).png"; sourceTree = "<group>"; };
+		C7EC58AF189DCDF9001D2220 /* BeacTracIcon4 (80).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTracIcon4 (80).png"; sourceTree = "<group>"; };
+		C7EC58B0189DCDF9001D2220 /* BeacTracIcon4 (58).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTracIcon4 (58).png"; sourceTree = "<group>"; };
+		C7EC58B4189DE35F001D2220 /* 2014-02-01 21.01.08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2014-02-01 21.01.08.png"; sourceTree = "<group>"; };
+		C7EC58B6189DFAD8001D2220 /* loading640960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading640960.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,9 +119,11 @@
 		C726DF521875101E0049FA9F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				C726DF55187525050049FA9F /* BeacTrack Icon58.png */,
-				C726DF56187525050049FA9F /* BeacTrack Icon80.png */,
-				C726DF57187525050049FA9F /* BeacTrack Icon120.png */,
+				C7EC58B4189DE35F001D2220 /* 2014-02-01 21.01.08.png */,
+				C7EC58B6189DFAD8001D2220 /* loading640960.png */,
+				C7EC58AE189DCDF9001D2220 /* BeacTracIcon4 (120).png */,
+				C7EC58AF189DCDF9001D2220 /* BeacTracIcon4 (80).png */,
+				C7EC58B0189DCDF9001D2220 /* BeacTracIcon4 (58).png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -146,10 +144,8 @@
 		C73695B518860E1E00341303 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C78D1FF71854E25800E61CB6 /* TrackBeacon.h */,
-				C78D1FF81854E25800E61CB6 /* TrackBeacon.m */,
-				C78A81C81863C94B007088FD /* UUIDStore.h */,
-				C78A81C91863C94B007088FD /* UUIDStore.m */,
+				C78A81C81863C94B007088FD /* PeripheralStore.h */,
+				C78A81C91863C94B007088FD /* PeripheralStore.m */,
 				C7215D7718654AC80061279A /* UUIDString.h */,
 				C7215D7818654AC80061279A /* UUIDString.m */,
 			);
@@ -159,13 +155,10 @@
 		C7603B12189A1A5600321E0D /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
-				C78D1FFA1854E34500E61CB6 /* TransmitBeacon.h */,
-				C78D1FFB1854E34500E61CB6 /* TransmitBeacon.m */,
 				C78A81CE1863DACB007088FD /* TableViewController.h */,
 				C78A81CF1863DACB007088FD /* TableViewController.m */,
-				C78A81D01863DACB007088FD /* TableViewController.xib */,
-				C7603B16189A1B2F00321E0D /* AnimationViewController.h */,
-				C7603B17189A1B2F00321E0D /* AnimationViewController.m */,
+				C78E0CEF189EA2DB00C754FE /* ReceivedBeaconDataTableViewController.h */,
+				C78E0CF0189EA2DB00C754FE /* ReceivedBeaconDataTableViewController.m */,
 			);
 			name = SubViews;
 			sourceTree = "<group>";
@@ -326,13 +319,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C726DF59187525050049FA9F /* BeacTrack Icon80.png in Resources */,
-				C726DF58187525050049FA9F /* BeacTrack Icon58.png in Resources */,
 				C726DF5F187534480049FA9F /* Default-568h@2x.png in Resources */,
+				C7EC58B7189DFAD8001D2220 /* loading640960.png in Resources */,
+				C7EC58B3189DCDF9001D2220 /* BeacTracIcon4 (58).png in Resources */,
 				C78D1FD81854DEFE00E61CB6 /* Images.xcassets in Resources */,
-				C726DF5A187525050049FA9F /* BeacTrack Icon120.png in Resources */,
 				C78D1FCA1854DEFE00E61CB6 /* InfoPlist.strings in Resources */,
-				C78A81D21863DACB007088FD /* TableViewController.xib in Resources */,
+				C7EC58B2189DCDF9001D2220 /* BeacTracIcon4 (80).png in Resources */,
+				C7EC58B5189DE35F001D2220 /* 2014-02-01 21.01.08.png in Resources */,
+				C7EC58B1189DCDF9001D2220 /* BeacTracIcon4 (120).png in Resources */,
 				C78D1FD31854DEFE00E61CB6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,12 +349,10 @@
 				C7603B111899E85900321E0D /* MainViewController.m in Sources */,
 				C78D1FD61854DEFE00E61CB6 /* ViewController.m in Sources */,
 				C790ECCA189AC51E00929953 /* DrawingView.m in Sources */,
-				C78A81CA1863C94B007088FD /* UUIDStore.m in Sources */,
-				C78D1FF91854E25800E61CB6 /* TrackBeacon.m in Sources */,
+				C78E0CF1189EA2DB00C754FE /* ReceivedBeaconDataTableViewController.m in Sources */,
+				C78A81CA1863C94B007088FD /* PeripheralStore.m in Sources */,
 				C78A81D11863DACB007088FD /* TableViewController.m in Sources */,
-				C78D1FFC1854E34500E61CB6 /* TransmitBeacon.m in Sources */,
 				C78D1FD01854DEFE00E61CB6 /* AppDelegate.m in Sources */,
-				C7603B18189A1B2F00321E0D /* AnimationViewController.m in Sources */,
 				C78D1FCC1854DEFE00E61CB6 /* main.m in Sources */,
 				C7215D7918654AC80061279A /* UUIDString.m in Sources */,
 			);

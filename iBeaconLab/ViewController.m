@@ -9,7 +9,6 @@
     
 */
 #import "ViewController.h"
-#import "TrackBeacon.h"
 
 @interface ViewController ()
 {
@@ -66,32 +65,9 @@
     [self resignFirstResponder];
 }
 
-- (IBAction)TrackBeaconButtonPress:(id)sender {
-    [self.centralManager stopScan];
-}
 
--(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    if ([identifier isEqualToString:@"pushTrackBeacon"]) {
-        if ([self.UUIDTextField.text length]>1) {
-            return YES;
-        }
-    }
-    else if ([identifier isEqualToString:@"transmitSegue"]){
-        return YES;
-    }
-    return NO;
-}
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"pushTrackBeacon"]) {
-        if([self.UUIDTextField.text length]< 2){
-            self.UUIDTextField.text = [NSString stringWithString:tableVC.selectedUUID];
-        }
-        TrackBeacon *beaconTracker = [segue destinationViewController];
-        beaconTracker.selectedUUID = self.UUIDTextField.text;
-    }
-    [self.centralManager stopScan];
-}
+
 
 -(void)centralManagerDidUpdateState:(CBCentralManager *)central{
     if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
@@ -107,7 +83,7 @@
     if([setOfUniquePeriperals containsObject:peripheral] == NO){
         NSLog(@"Added Unique Peripheral: %@", peripheral.description);
         [setOfUniquePeriperals addObject:peripheral];
-        newPeripheral = [[UUIDStore sharedStore]addNewPeripheral:peripheral];
+        newPeripheral = [[PeripheralStore sharedStore]addNewPeripheral:peripheral];
         [self reloadTable];
     }
 }
