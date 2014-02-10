@@ -48,5 +48,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *broadcastUUIDLabel;
 @property (strong, nonatomic) IBOutlet UILabel *broadcastIdentityLabel;
 @property (strong, nonatomic) IBOutlet UILabel *transmittingAsLabel;
+@property (strong, nonatomic) IBOutlet UITextField *keyUUIDTextField;
 
 @end

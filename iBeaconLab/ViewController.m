@@ -65,10 +65,6 @@
     [self resignFirstResponder];
 }
 
-
-
-
-
 -(void)centralManagerDidUpdateState:(CBCentralManager *)central{
     if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
         [self.centralManager scanForPeripheralsWithServices:nil options:nil];
