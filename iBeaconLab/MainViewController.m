@@ -55,55 +55,6 @@
     self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
 }
 
--(void)startTransmitter{
-    NSUUID *deviceUUID = [[UIDevice currentDevice]identifierForVendor];
-    
-    CLBeaconRegion *myBeaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:deviceUUID major:1 minor:1 identifier:[[UIDevice currentDevice]name]];
-    peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil];
-    beaconPeripheralData = [[NSDictionary alloc]init];
-    beaconPeripheralData = [myBeaconRegion peripheralDataWithMeasuredPower:nil];
-    NSString *peripheralUUIDString = [NSString stringWithFormat:@"%@", deviceUUID.UUIDString];
-    NSString *shorterString = [peripheralUUIDString substringFromIndex:([peripheralUUIDString length]-4)];
-    self.broadcastMajorLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.major];
-    self.broadcastMinorLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.minor];
-    self.broadcastUUIDLabel.text = [NSString stringWithFormat:@"%@",shorterString];
-    self.broadcastIdentityLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.identifier];
-    self.transmittingAsLabel.text = [NSString stringWithFormat:@"Transmitting"];
-    [self.broadcastMajorLabel setHidden:NO];
-    [self.broadcastMinorLabel setHidden:NO];
-    [self.broadcastUUIDLabel setHidden:NO];
-    [self.broadcastIdentityLabel setHidden:NO];
-    [self.transmittingAsLabel setHidden:YES];
-}
-
--(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
-    NSLog(@"peripheral manager did update state VC");
-    if(peripheral.state == CBPeripheralManagerStatePoweredOn){
-        [peripheralManager startAdvertising:beaconPeripheralData];
-        NSLog(@"peripheral manager started advertising");
-        [self.broadcastMajorLabel setHidden:NO];
-        [self.broadcastMinorLabel setHidden:NO];
-        [self.broadcastUUIDLabel setHidden:NO];
-        [self.broadcastIdentityLabel setHidden:NO];
-        [self.transmittingAsLabel setHidden:NO];
-    }
-    else if(peripheral.state == CBPeripheralManagerStatePoweredOff){
-        [peripheralManager stopAdvertising];
-        [self.broadcastMajorLabel setHidden:YES];
-        [self.broadcastMinorLabel setHidden:YES];
-        [self.broadcastUUIDLabel setHidden:YES];
-        [self.broadcastIdentityLabel setHidden:YES];
-    }
-}
-
--(void)preferredContentSizeChanged:(NSNotification*)notification{
-    self.retrievedbroadcastMinorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.retrievedbroadcastMajorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.retrievedRSSILabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    [self.retrievedUUIDLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
-    self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-}
-
 -(void)centralManagerDidUpdateState:(CBCentralManager *)central{
     if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
         NSLog(@"central manager powered on");
@@ -224,5 +175,52 @@
     [self.view setNeedsDisplay];
 }
 
+-(void)startTransmitter{
+    NSUUID *deviceUUID = [[UIDevice currentDevice]identifierForVendor];
+    CLBeaconRegion *myBeaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:deviceUUID major:1 minor:1 identifier:[[UIDevice currentDevice]name]];
+    peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil];
+    beaconPeripheralData = [[NSDictionary alloc]init];
+    beaconPeripheralData = [myBeaconRegion peripheralDataWithMeasuredPower:nil];
+    NSString *peripheralUUIDString = [NSString stringWithFormat:@"%@", deviceUUID.UUIDString];
+    NSString *shorterString = [peripheralUUIDString substringFromIndex:([peripheralUUIDString length]-4)];
+    self.broadcastMajorLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.major];
+    self.broadcastMinorLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.minor];
+    self.broadcastUUIDLabel.text = [NSString stringWithFormat:@"%@",shorterString];
+    self.broadcastIdentityLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.identifier];
+    self.transmittingAsLabel.text = [NSString stringWithFormat:@"Transmitting"];
+    [self.broadcastMajorLabel setHidden:NO];
+    [self.broadcastMinorLabel setHidden:NO];
+    [self.broadcastUUIDLabel setHidden:NO];
+    [self.broadcastIdentityLabel setHidden:NO];
+    [self.transmittingAsLabel setHidden:YES];
+}
+
+-(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
+    NSLog(@"peripheral manager did update state VC");
+    if(peripheral.state == CBPeripheralManagerStatePoweredOn){
+        [peripheralManager startAdvertising:beaconPeripheralData];
+        NSLog(@"peripheral manager started advertising");
+        [self.broadcastMajorLabel setHidden:NO];
+        [self.broadcastMinorLabel setHidden:NO];
+        [self.broadcastUUIDLabel setHidden:NO];
+        [self.broadcastIdentityLabel setHidden:NO];
+        [self.transmittingAsLabel setHidden:NO];
+    }
+    else if(peripheral.state == CBPeripheralManagerStatePoweredOff){
+        [peripheralManager stopAdvertising];
+        [self.broadcastMajorLabel setHidden:YES];
+        [self.broadcastMinorLabel setHidden:YES];
+        [self.broadcastUUIDLabel setHidden:YES];
+        [self.broadcastIdentityLabel setHidden:YES];
+    }
+}
+
+-(void)preferredContentSizeChanged:(NSNotification*)notification{
+    self.retrievedbroadcastMinorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.retrievedbroadcastMajorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.retrievedRSSILabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    [self.retrievedUUIDLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
+    self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+}
 
 @end
