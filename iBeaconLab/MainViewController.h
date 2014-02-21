@@ -12,42 +12,40 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DrawingView.h"
 #import "TableViewController.h"
-#import "PeripheralStore.h"
-#import "UUIDString.h"
 
-@interface MainViewController : UIViewController <CLLocationManagerDelegate, CBCentralManagerDelegate, CBPeripheralManagerDelegate, UITableViewDelegate>
+#import "UUIDString.h"
+#import <MultipeerConnectivity/MultipeerConnectivity.h>
+
+@interface MainViewController : UIViewController <CLLocationManagerDelegate, CBPeripheralManagerDelegate, UITableViewDelegate, CBPeripheralDelegate>
 {
     NSString *newUUIDString;
     CBPeripheral *newPeripheral;
     NSUUID *grabbedUUID;
     NSMutableSet *setOfUniquePeriperals;
     DrawingView *drawingView;
-    TableViewController *tvc;
 }
 @property (strong, nonatomic) CBCentralManager *centralManager;
-@property (strong, nonatomic) CBPeripheral *discoveredPeripheral;
 @property (strong, nonatomic) NSString *UUIDToPass;
-
 @property (strong, nonatomic) CLBeaconRegion *beaconRegion;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLBeacon *foundBeacon;
-
--(void)startiBeaconConfirmerWithUUIDString:(NSString*)passedInUUIDString;
+@property (strong, nonatomic) NSMutableData *data;
 @property BOOL findingBeacon;
-
--(void)glowEffect:(CALayer*)layer withRect:(CGRect)rect;
 @property (strong, nonatomic) IBOutlet UILabel *beaconStatusLabel;
 @property (strong, nonatomic) IBOutlet UILabel *retrievedUUIDLabel;
 @property (strong, nonatomic) IBOutlet UILabel *retrievedbroadcastMajorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *retrievedbroadcastMinorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *transmitDistanceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *retrievedRSSILabel;
-
 @property (strong, nonatomic) IBOutlet UILabel *broadcastMajorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *broadcastMinorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *broadcastUUIDLabel;
 @property (strong, nonatomic) IBOutlet UILabel *broadcastIdentityLabel;
 @property (strong, nonatomic) IBOutlet UILabel *transmittingAsLabel;
-@property (strong, nonatomic) IBOutlet UITextField *keyUUIDTextField;
+- (IBAction)rangeBeacon:(id)sender;
+-(void)startiBeaconConfirmerWithUUIDString:(NSString*)passedInUUIDString;
+-(void)glowEffect:(CALayer*)layer withRect:(CGRect)rect;
+@property (strong, nonatomic) MCPeerID *myPeerID;
+
 
 @end

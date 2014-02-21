@@ -13,6 +13,7 @@
 		C7603B111899E85900321E0D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7603B101899E85900321E0D /* MainViewController.m */; };
 		C78A81CA1863C94B007088FD /* PeripheralStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C78A81C91863C94B007088FD /* PeripheralStore.m */; };
 		C78A81D11863DACB007088FD /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78A81CF1863DACB007088FD /* TableViewController.m */; };
+		C78D091518B6EC01005ABFF7 /* MCSessionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D091418B6EC01005ABFF7 /* MCSessionHandler.m */; };
 		C78D1FC01854DEFE00E61CB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */; };
 		C78D1FC21854DEFE00E61CB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */; };
 		C78D1FC41854DEFE00E61CB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC31854DEFE00E61CB6 /* UIKit.framework */; };
@@ -20,7 +21,6 @@
 		C78D1FCC1854DEFE00E61CB6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D1FCB1854DEFE00E61CB6 /* main.m */; };
 		C78D1FD01854DEFE00E61CB6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D1FCF1854DEFE00E61CB6 /* AppDelegate.m */; };
 		C78D1FD31854DEFE00E61CB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78D1FD11854DEFE00E61CB6 /* Main.storyboard */; };
-		C78D1FD61854DEFE00E61CB6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D1FD51854DEFE00E61CB6 /* ViewController.m */; };
 		C78D1FD81854DEFE00E61CB6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C78D1FD71854DEFE00E61CB6 /* Images.xcassets */; };
 		C78D1FDF1854DEFE00E61CB6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FDE1854DEFE00E61CB6 /* XCTest.framework */; };
 		C78D1FE01854DEFE00E61CB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */; };
@@ -30,6 +30,7 @@
 		C78D20001854E4E600E61CB6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */; };
 		C78E0CF1189EA2DB00C754FE /* ReceivedBeaconDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78E0CF0189EA2DB00C754FE /* ReceivedBeaconDataTableViewController.m */; };
 		C790ECCA189AC51E00929953 /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C790ECC9189AC51E00929953 /* DrawingView.m */; };
+		C7E8750018A9BF0C00EC3D2E /* MCPeerSenderReceivier.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E874FF18A9BF0C00EC3D2E /* MCPeerSenderReceivier.m */; };
 		C7EC58B1189DCDF9001D2220 /* BeacTracIcon4 (120).png in Resources */ = {isa = PBXBuildFile; fileRef = C7EC58AE189DCDF9001D2220 /* BeacTracIcon4 (120).png */; };
 		C7EC58B2189DCDF9001D2220 /* BeacTracIcon4 (80).png in Resources */ = {isa = PBXBuildFile; fileRef = C7EC58AF189DCDF9001D2220 /* BeacTracIcon4 (80).png */; };
 		C7EC58B3189DCDF9001D2220 /* BeacTracIcon4 (58).png in Resources */ = {isa = PBXBuildFile; fileRef = C7EC58B0189DCDF9001D2220 /* BeacTracIcon4 (58).png */; };
@@ -60,6 +61,8 @@
 		C78A81C91863C94B007088FD /* PeripheralStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeripheralStore.m; sourceTree = "<group>"; };
 		C78A81CE1863DACB007088FD /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		C78A81CF1863DACB007088FD /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		C78D091318B6EC01005ABFF7 /* MCSessionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSessionHandler.h; sourceTree = "<group>"; };
+		C78D091418B6EC01005ABFF7 /* MCSessionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSessionHandler.m; sourceTree = "<group>"; };
 		C78D1FBC1854DEFE00E61CB6 /* iBeaconLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -70,8 +73,6 @@
 		C78D1FCE1854DEFE00E61CB6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C78D1FCF1854DEFE00E61CB6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C78D1FD21854DEFE00E61CB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C78D1FD41854DEFE00E61CB6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C78D1FD51854DEFE00E61CB6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C78D1FD71854DEFE00E61CB6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C78D1FDD1854DEFE00E61CB6 /* iBeaconLabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iBeaconLabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78D1FDE1854DEFE00E61CB6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -83,6 +84,8 @@
 		C78E0CF0189EA2DB00C754FE /* ReceivedBeaconDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReceivedBeaconDataTableViewController.m; sourceTree = "<group>"; };
 		C790ECC8189AC51E00929953 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
 		C790ECC9189AC51E00929953 /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
+		C7E874FE18A9BF0C00EC3D2E /* MCPeerSenderReceivier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPeerSenderReceivier.h; sourceTree = "<group>"; };
+		C7E874FF18A9BF0C00EC3D2E /* MCPeerSenderReceivier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPeerSenderReceivier.m; sourceTree = "<group>"; };
 		C7EC58AE189DCDF9001D2220 /* BeacTracIcon4 (120).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTracIcon4 (120).png"; sourceTree = "<group>"; };
 		C7EC58AF189DCDF9001D2220 /* BeacTracIcon4 (80).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTracIcon4 (80).png"; sourceTree = "<group>"; };
 		C7EC58B0189DCDF9001D2220 /* BeacTracIcon4 (58).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTracIcon4 (58).png"; sourceTree = "<group>"; };
@@ -133,8 +136,6 @@
 			children = (
 				C7603B0F1899E85900321E0D /* MainViewController.h */,
 				C7603B101899E85900321E0D /* MainViewController.m */,
-				C78D1FD41854DEFE00E61CB6 /* ViewController.h */,
-				C78D1FD51854DEFE00E61CB6 /* ViewController.m */,
 				C790ECC8189AC51E00929953 /* DrawingView.h */,
 				C790ECC9189AC51E00929953 /* DrawingView.m */,
 			);
@@ -148,6 +149,10 @@
 				C78A81C91863C94B007088FD /* PeripheralStore.m */,
 				C7215D7718654AC80061279A /* UUIDString.h */,
 				C7215D7818654AC80061279A /* UUIDString.m */,
+				C7E874FE18A9BF0C00EC3D2E /* MCPeerSenderReceivier.h */,
+				C7E874FF18A9BF0C00EC3D2E /* MCPeerSenderReceivier.m */,
+				C78D091318B6EC01005ABFF7 /* MCSessionHandler.h */,
+				C78D091418B6EC01005ABFF7 /* MCSessionHandler.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -347,14 +352,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7603B111899E85900321E0D /* MainViewController.m in Sources */,
-				C78D1FD61854DEFE00E61CB6 /* ViewController.m in Sources */,
 				C790ECCA189AC51E00929953 /* DrawingView.m in Sources */,
 				C78E0CF1189EA2DB00C754FE /* ReceivedBeaconDataTableViewController.m in Sources */,
 				C78A81CA1863C94B007088FD /* PeripheralStore.m in Sources */,
 				C78A81D11863DACB007088FD /* TableViewController.m in Sources */,
 				C78D1FD01854DEFE00E61CB6 /* AppDelegate.m in Sources */,
 				C78D1FCC1854DEFE00E61CB6 /* main.m in Sources */,
+				C78D091518B6EC01005ABFF7 /* MCSessionHandler.m in Sources */,
 				C7215D7918654AC80061279A /* UUIDString.m in Sources */,
+				C7E8750018A9BF0C00EC3D2E /* MCPeerSenderReceivier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,11 +4,14 @@
 //
 //  Created by Kevin Taniguchi on 1/29/14.
 //  Copyright (c) 2014 Taniguchi. All rights reserved.
-//  TO DO
-//  put in a textfield for entering UUIDs to range
-//  when done editing startRanging with that UUID that makes that beaconRegion
 
+/*
+    
+*/
 #import "MainViewController.h"
+
+static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";
+static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
 
 @implementation MainViewController{
     dispatch_queue_t backgroundQueue;
@@ -17,14 +20,9 @@
     BOOL isTransmitting;
 }
 
-@synthesize beaconRegion, locationManager, centralManager, discoveredPeripheral, UUIDToPass, foundBeacon,beaconStatusLabel,findingBeacon, retrievedUUIDLabel, transmitDistanceLabel, retrievedbroadcastMajorLabel,retrievedbroadcastMinorLabel, retrievedRSSILabel, transmittingAsLabel;
+@synthesize beaconRegion, locationManager, centralManager, UUIDToPass, foundBeacon,beaconStatusLabel,findingBeacon, retrievedUUIDLabel, transmitDistanceLabel, retrievedbroadcastMajorLabel,retrievedbroadcastMinorLabel, retrievedRSSILabel, transmittingAsLabel, data;
 
 -(void)viewWillAppear:(BOOL)animated{
-    tvc = [[self storyboard] instantiateViewControllerWithIdentifier:@"PeripheralTableView"];
-    [tvc.view setFrame:CGRectMake(171, 50, 142, 163)];
-    [self addChildViewController:tvc];
-    [self.view addSubview:tvc.view];
-    [tvc.tableView setDelegate:self];
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
     [self.retrievedUUIDLabel setHidden:YES];
@@ -41,9 +39,10 @@
     [self.broadcastUUIDLabel setHidden:YES];
     [self.broadcastIdentityLabel setHidden:YES];
     [self.transmittingAsLabel setHidden:YES];
-    drawingView = [[DrawingView alloc]initWithFrame:CGRectMake(0, 350, self.view.frame.size.width, 300)];
+    drawingView = [[DrawingView alloc]initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 300)];
     [self.view addSubview:drawingView];
     self.beaconStatusLabel.text = @"Looking for beacons...";
+    self.data = [[NSMutableData alloc]init];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -52,29 +51,12 @@
         [self startTransmitter];
     });
     [self glowEffect:beaconStatusLabel.layer withRect:beaconStatusLabel.frame];
-    self.centralManager = [[CBCentralManager alloc]initWithDelegate:self queue:nil];
 }
 
--(void)centralManagerDidUpdateState:(CBCentralManager *)central{
-    if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
-        NSLog(@"central manager powered on");
-        [self.centralManager scanForPeripheralsWithServices:nil options:nil];
-    }
-    else return;
-}
-
--(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI{
-    NSLog(@"Found a peripheral: %@", peripheral.description);
-    if (![setOfUniquePeriperals containsObject:peripheral]) {
-        NSLog(@"Added Unique Peripheral: %@", peripheral.description);
-        [setOfUniquePeriperals addObject:peripheral];
-        // add to the peripheralStore
-        [[PeripheralStore sharedStore]addNewPeripheral:peripheral];
-        NSLog(@"Peri store has:  %lu", (unsigned long)[[[PeripheralStore sharedStore]allPeripheralsSet] count]);
-        [tvc.tableView reloadData];
-        [self startiBeaconConfirmerWithUUIDString:peripheral.identifier.UUIDString];
-        [self.centralManager stopScan];
-    }
+// look for services that match MY transfer service UUID - in other words other versions of this same app
+// call this method when the user agrees to connect with the discovered other transfer UUID 
+- (IBAction)rangeBeacon:(id)sender {
+    [self startiBeaconConfirmerWithUUIDString:UUIDADVERT];
 }
 
 -(void)startiBeaconConfirmerWithUUIDString:(NSString *)passedInUUIDString{
@@ -115,6 +97,8 @@
     NSLog(@"did range beacons called");
     self.foundBeacon = [[CLBeacon alloc]init];
     self.foundBeacon = [beacons lastObject];
+    NSLog(@"Found %lu beacons", (unsigned long)[beacons count]);
+    // possibly put these beacons in an array around you
     if (self.foundBeacon != NULL) {
         [self.beaconStatusLabel.layer removeAllAnimations];
         self.beaconStatusLabel.text = @"Found A Beacon";
@@ -152,7 +136,6 @@
     }
     else if(self.foundBeacon == NULL){
         NSLog(@"did not find a beacon");
-        [self.centralManager scanForPeripheralsWithServices:nil options:nil];
         self.beaconStatusLabel.text = @"Looking for Beacons";
         [self glowEffect:beaconStatusLabel.layer withRect:beaconStatusLabel.frame];
         [self.transmitDistanceLabel setHidden:YES];
@@ -174,14 +157,15 @@
     [layer addAnimation:glowEffect forKey:@"animateOpacity"];
     [self.view setNeedsDisplay];
 }
-
+// TRANSMITTING A SIGNAL
 -(void)startTransmitter{
-    NSUUID *deviceUUID = [[UIDevice currentDevice]identifierForVendor];
-    CLBeaconRegion *myBeaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:deviceUUID major:1 minor:1 identifier:[[UIDevice currentDevice]name]];
+    
+    NSUUID *advertisingUUID = [[NSUUID alloc]initWithUUIDString:UUIDADVERT];
+    CLBeaconRegion *myBeaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:advertisingUUID major:1 minor:1 identifier:[[UIDevice currentDevice]name]];
     peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil];
     beaconPeripheralData = [[NSDictionary alloc]init];
     beaconPeripheralData = [myBeaconRegion peripheralDataWithMeasuredPower:nil];
-    NSString *peripheralUUIDString = [NSString stringWithFormat:@"%@", deviceUUID.UUIDString];
+    NSString *peripheralUUIDString = [NSString stringWithFormat:@"%@", UUIDADVERT];
     NSString *shorterString = [peripheralUUIDString substringFromIndex:([peripheralUUIDString length]-4)];
     self.broadcastMajorLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.major];
     self.broadcastMinorLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.minor];
