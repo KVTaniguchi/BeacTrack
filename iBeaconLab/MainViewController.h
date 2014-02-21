@@ -11,9 +11,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <QuartzCore/QuartzCore.h>
 #import "DrawingView.h"
-#import "TableViewController.h"
 
-#import "UUIDString.h"
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 
 @interface MainViewController : UIViewController <CLLocationManagerDelegate, CBPeripheralManagerDelegate, UITableViewDelegate, CBPeripheralDelegate>
