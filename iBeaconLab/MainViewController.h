@@ -31,15 +31,8 @@
 @property BOOL findingBeacon;
 @property (strong, nonatomic) IBOutlet UILabel *beaconStatusLabel;
 @property (strong, nonatomic) IBOutlet UILabel *retrievedUUIDLabel;
-@property (strong, nonatomic) IBOutlet UILabel *retrievedbroadcastMajorLabel;
-@property (strong, nonatomic) IBOutlet UILabel *retrievedbroadcastMinorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *transmitDistanceLabel;
-@property (strong, nonatomic) IBOutlet UILabel *retrievedRSSILabel;
-@property (strong, nonatomic) IBOutlet UILabel *broadcastMajorLabel;
-@property (strong, nonatomic) IBOutlet UILabel *broadcastMinorLabel;
-@property (strong, nonatomic) IBOutlet UILabel *broadcastUUIDLabel;
 @property (strong, nonatomic) IBOutlet UILabel *broadcastIdentityLabel;
-@property (strong, nonatomic) IBOutlet UILabel *transmittingAsLabel;
 - (IBAction)rangeBeacon:(id)sender;
 -(void)startiBeaconConfirmerWithUUIDString:(NSString*)passedInUUIDString;
 -(void)glowEffect:(CALayer*)layer withRect:(CGRect)rect;

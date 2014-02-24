@@ -20,25 +20,15 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
     BOOL isTransmitting;
 }
 
-@synthesize beaconRegion, locationManager, centralManager, UUIDToPass, foundBeacon,beaconStatusLabel,findingBeacon, retrievedUUIDLabel, transmitDistanceLabel, retrievedbroadcastMajorLabel,retrievedbroadcastMinorLabel, retrievedRSSILabel, transmittingAsLabel, data;
+@synthesize beaconRegion, locationManager, centralManager, UUIDToPass, foundBeacon,beaconStatusLabel,findingBeacon, retrievedUUIDLabel, transmitDistanceLabel, data;
 
 -(void)viewWillAppear:(BOOL)animated{
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
     [self.retrievedUUIDLabel setHidden:YES];
-    [self.retrievedbroadcastMajorLabel setHidden:YES];
-    [self.retrievedbroadcastMinorLabel setHidden:YES];
-    [self.transmittingAsLabel setHidden:YES];
-    self.retrievedbroadcastMinorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.retrievedbroadcastMajorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.retrievedRSSILabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self.retrievedUUIDLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
     self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    [self.broadcastMajorLabel setHidden:YES];
-    [self.broadcastMinorLabel setHidden:YES];
-    [self.broadcastUUIDLabel setHidden:YES];
     [self.broadcastIdentityLabel setHidden:YES];
-    [self.transmittingAsLabel setHidden:YES];
     drawingView = [[DrawingView alloc]initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 300)];
     [self.view addSubview:drawingView];
     self.beaconStatusLabel.text = @"Looking for beacons...";
@@ -101,18 +91,12 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
     // possibly put these beacons in an array around you
     if (self.foundBeacon != NULL) {
         [self.beaconStatusLabel.layer removeAllAnimations];
-        self.beaconStatusLabel.text = @"Found A Beacon";
+        self.beaconStatusLabel.text = [NSString stringWithFormat:@"Found Beacon"];
+        NSLog(@"%@", self.foundBeacon.description);
         [self.transmitDistanceLabel setHidden:NO];
-        [self.retrievedRSSILabel setHidden:NO];
-        [self.retrievedUUIDLabel setHidden:NO];
-        [self.retrievedbroadcastMajorLabel setHidden:NO];
-        [self.retrievedbroadcastMinorLabel setHidden:NO];
-
         NSString *idString = self.foundBeacon.proximityUUID.UUIDString;
         NSString *beaconUUID = [idString substringFromIndex:([idString length]-4)];
         self.retrievedUUIDLabel.text = beaconUUID;
-        self.retrievedbroadcastMajorLabel.text = [NSString stringWithFormat:@"%@", self.foundBeacon.major];
-        self.retrievedbroadcastMinorLabel.text = [NSString stringWithFormat:@"%@", self.foundBeacon.minor];
         if(self.foundBeacon.proximity == CLProximityUnknown){
             self.transmitDistanceLabel.text = @"unknown";
         } else if (self.foundBeacon.proximity == CLProximityImmediate){
@@ -122,27 +106,23 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
         } else if (self.foundBeacon.proximity == CLProximityFar){
             self.transmitDistanceLabel.text = @"far";
         }
-        self.retrievedRSSILabel.text = [NSString stringWithFormat:@"%li", (long)self.foundBeacon.rssi];
-        
         NSUInteger posRSSI = ABS(self.foundBeacon.rssi);
         if (posRSSI ==  0) {
             self.beaconStatusLabel.text = @"Signal Lost";
         }
         NSLog(@"RSS value is: %ld", (long)posRSSI);
-        drawingView.circleRadius = 3800 / posRSSI;
+        drawingView.circleRadius = 5000 / posRSSI;
         CGRect drawingRect = CGRectMake(0, 300, self.view.frame.size.width, 300);
         [self glowEffect:drawingView.layer withRect:drawingRect];
         [drawingView setNeedsDisplay];
+        
+        // kick off other methods here that can be used with the beacon for example AFNetworking requests
+        // mc peer connectivity requests
     }
     else if(self.foundBeacon == NULL){
         NSLog(@"did not find a beacon");
         self.beaconStatusLabel.text = @"Looking for Beacons";
         [self glowEffect:beaconStatusLabel.layer withRect:beaconStatusLabel.frame];
-        [self.transmitDistanceLabel setHidden:YES];
-        [self.retrievedRSSILabel setHidden:YES];
-        [self.retrievedUUIDLabel setHidden:YES];
-        [self.retrievedbroadcastMajorLabel setHidden:YES];
-        [self.retrievedbroadcastMinorLabel setHidden:YES];
     }
 }
 
@@ -159,24 +139,14 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
 }
 // TRANSMITTING A SIGNAL
 -(void)startTransmitter{
-    
     NSUUID *advertisingUUID = [[NSUUID alloc]initWithUUIDString:UUIDADVERT];
-    CLBeaconRegion *myBeaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:advertisingUUID major:1 minor:1 identifier:[[UIDevice currentDevice]name]];
+    // generate random numbers for the minor
+    CLBeaconRegion *myBeaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:advertisingUUID major:1 minor:2 identifier:[[UIDevice currentDevice]name]];
     peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil];
     beaconPeripheralData = [[NSDictionary alloc]init];
     beaconPeripheralData = [myBeaconRegion peripheralDataWithMeasuredPower:nil];
-    NSString *peripheralUUIDString = [NSString stringWithFormat:@"%@", UUIDADVERT];
-    NSString *shorterString = [peripheralUUIDString substringFromIndex:([peripheralUUIDString length]-4)];
-    self.broadcastMajorLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.major];
-    self.broadcastMinorLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.minor];
-    self.broadcastUUIDLabel.text = [NSString stringWithFormat:@"%@",shorterString];
     self.broadcastIdentityLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.identifier];
-    self.transmittingAsLabel.text = [NSString stringWithFormat:@"Transmitting"];
-    [self.broadcastMajorLabel setHidden:NO];
-    [self.broadcastMinorLabel setHidden:NO];
-    [self.broadcastUUIDLabel setHidden:NO];
     [self.broadcastIdentityLabel setHidden:NO];
-    [self.transmittingAsLabel setHidden:YES];
 }
 
 -(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
@@ -184,25 +154,15 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
     if(peripheral.state == CBPeripheralManagerStatePoweredOn){
         [peripheralManager startAdvertising:beaconPeripheralData];
         NSLog(@"peripheral manager started advertising");
-        [self.broadcastMajorLabel setHidden:NO];
-        [self.broadcastMinorLabel setHidden:NO];
-        [self.broadcastUUIDLabel setHidden:NO];
         [self.broadcastIdentityLabel setHidden:NO];
-        [self.transmittingAsLabel setHidden:NO];
     }
     else if(peripheral.state == CBPeripheralManagerStatePoweredOff){
         [peripheralManager stopAdvertising];
-        [self.broadcastMajorLabel setHidden:YES];
-        [self.broadcastMinorLabel setHidden:YES];
-        [self.broadcastUUIDLabel setHidden:YES];
         [self.broadcastIdentityLabel setHidden:YES];
     }
 }
 
 -(void)preferredContentSizeChanged:(NSNotification*)notification{
-    self.retrievedbroadcastMinorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.retrievedbroadcastMajorLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.retrievedRSSILabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self.retrievedUUIDLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
     self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
