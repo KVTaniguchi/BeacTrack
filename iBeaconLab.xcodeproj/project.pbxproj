@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C726DF5418751E150049FA9F /* BeacTrackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C726DF5318751E150049FA9F /* BeacTrackTest.m */; };
-		C726DF5F187534480049FA9F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C726DF5E187534480049FA9F /* Default-568h@2x.png */; };
 		C7603B111899E85900321E0D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7603B101899E85900321E0D /* MainViewController.m */; };
 		C78D1FC01854DEFE00E61CB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */; };
 		C78D1FC21854DEFE00E61CB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */; };
@@ -45,9 +44,6 @@
 
 /* Begin PBXFileReference section */
 		C726DF5318751E150049FA9F /* BeacTrackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeacTrackTest.m; sourceTree = "<group>"; };
-		C726DF5C187534290049FA9F /* BeacTrack Icon6401136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTrack Icon6401136.png"; sourceTree = "<group>"; };
-		C726DF5D187534390049FA9F /* BeacTrack Icon640960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTrack Icon640960.png"; sourceTree = "<group>"; };
-		C726DF5E187534480049FA9F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C7603B0F1899E85900321E0D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C7603B101899E85900321E0D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C78D1FBC1854DEFE00E61CB6 /* iBeaconLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,9 +135,6 @@
 		C78D1FB31854DEFE00E61CB6 = {
 			isa = PBXGroup;
 			children = (
-				C726DF5E187534480049FA9F /* Default-568h@2x.png */,
-				C726DF5D187534390049FA9F /* BeacTrack Icon640960.png */,
-				C726DF5C187534290049FA9F /* BeacTrack Icon6401136.png */,
 				C78D1FC51854DEFE00E61CB6 /* iBeaconLab */,
 				C78D1FE41854DEFE00E61CB6 /* iBeaconLabTests */,
 				C78D1FBE1854DEFE00E61CB6 /* Frameworks */,
@@ -291,7 +284,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C726DF5F187534480049FA9F /* Default-568h@2x.png in Resources */,
 				C7EC58B7189DFAD8001D2220 /* loading640960.png in Resources */,
 				C7EC58B3189DCDF9001D2220 /* BeacTracIcon4 (58).png in Resources */,
 				C78D1FD81854DEFE00E61CB6 /* Images.xcassets in Resources */,
