@@ -11,7 +11,6 @@
 #import "MainViewController.h"
 
 static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";
-static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
 
 @implementation MainViewController{
     dispatch_queue_t backgroundQueue;
@@ -33,7 +32,7 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
     [self.view addSubview:drawingView];
     self.beaconStatusLabel.text = @"Looking for beacons...";
     self.data = [[NSMutableData alloc]init];
-    [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController setNavigationBarHidden:NO];
     [self.chatWithMCButton setHidden:YES];
 }
 
@@ -104,8 +103,11 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
             self.transmitDistanceLabel.text = @"unknown";
         } else if (self.foundBeacon.proximity == CLProximityImmediate){
             self.transmitDistanceLabel.text = @"immediate";
+            [self.chatWithMCButton setHidden:NO];
+            // kick off MCPeer Connection
         } else if (self.foundBeacon.proximity == CLProximityNear){
             self.transmitDistanceLabel.text = @"near";
+            [self.chatWithMCButton setHidden:NO];
         } else if (self.foundBeacon.proximity == CLProximityFar){
             self.transmitDistanceLabel.text = @"far";
         }
@@ -113,14 +115,13 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
         if (posRSSI ==  0) {
             self.beaconStatusLabel.text = @"Signal Lost";
         }
-        NSLog(@"RSS value is: %ld", (long)posRSSI);
-        drawingView.circleRadius = 5000 / posRSSI;
-        CGRect drawingRect = CGRectMake(0, 300, self.view.frame.size.width, 300);
-        [self glowEffect:drawingView.layer withRect:drawingRect];
-        [drawingView setNeedsDisplay];
-        
-        // kick off other methods here that can be used with the beacon for example AFNetworking requests
-        // mc peer connectivity requests
+        else if(self.foundBeacon != NULL){
+            NSLog(@"RSS value is: %ld", (long)posRSSI);
+            drawingView.circleRadius = 5000 / posRSSI;
+            CGRect drawingRect = CGRectMake(0, 300, self.view.frame.size.width, 300);
+            [self glowEffect:drawingView.layer withRect:drawingRect];
+            [drawingView setNeedsDisplay];
+        }
     }
     else if(self.foundBeacon == NULL){
         NSLog(@"did not find a beacon");
@@ -172,6 +173,7 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
 
 - (IBAction)chatWithMCButtonPressed:(id)sender {
     MCViewController *MCChatVC = [[MCViewController alloc]init];
+    [drawingView removeFromSuperview];
     [self.navigationController pushViewController:MCChatVC animated:YES];
 }
 @end

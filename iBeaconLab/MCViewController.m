@@ -27,15 +27,13 @@
 -(void)setUpUI{
     self.browseButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.browseButton setTitle:@"Browse" forState:UIControlStateNormal];
-    self.browseButton.frame = CGRectMake(130, 20, 60, 30);
+    self.browseButton.frame = CGRectMake(130, 95, 60, 30);
     [self.view addSubview:self.browseButton];
-    
-    self.textBox = [[UITextView alloc]initWithFrame:CGRectMake(40, 150, 240, 270)];
+    self.textBox = [[UITextView alloc]initWithFrame:CGRectMake(40, 220, 240, 270)];
     self.textBox.editable = NO;
     self.textBox.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:self.textBox];
-    
-    self.chatBox = [[UITextField alloc]initWithFrame:CGRectMake(40, 60, 240, 70)];
+    self.chatBox = [[UITextField alloc]initWithFrame:CGRectMake(40, 130, 240, 70)];
     self.chatBox.delegate = self;
     self.chatBox.backgroundColor = [UIColor lightGrayColor];
     self.chatBox.returnKeyType = UIReturnKeySend;
