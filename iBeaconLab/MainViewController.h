@@ -11,8 +11,8 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <QuartzCore/QuartzCore.h>
 #import "DrawingView.h"
-
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
+#import "MCViewController.h"
 
 @interface MainViewController : UIViewController <CLLocationManagerDelegate, CBPeripheralManagerDelegate, UITableViewDelegate, CBPeripheralDelegate>
 {
@@ -37,6 +37,8 @@
 -(void)startiBeaconConfirmerWithUUIDString:(NSString*)passedInUUIDString;
 -(void)glowEffect:(CALayer*)layer withRect:(CGRect)rect;
 @property (strong, nonatomic) MCPeerID *myPeerID;
+@property (strong, nonatomic) IBOutlet UIButton *chatWithMCButton;
+- (IBAction)chatWithMCButtonPressed:(id)sender;
 
 
 @end

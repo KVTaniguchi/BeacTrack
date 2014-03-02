@@ -20,7 +20,7 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
     BOOL isTransmitting;
 }
 
-@synthesize beaconRegion, locationManager, centralManager, UUIDToPass, foundBeacon,beaconStatusLabel,findingBeacon, retrievedUUIDLabel, transmitDistanceLabel, data;
+@synthesize beaconRegion, locationManager, centralManager, UUIDToPass, foundBeacon,beaconStatusLabel,findingBeacon, retrievedUUIDLabel, transmitDistanceLabel, data, chatWithMCButton;
 
 -(void)viewWillAppear:(BOOL)animated{
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
@@ -29,10 +29,12 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
     [self.retrievedUUIDLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
     self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self.broadcastIdentityLabel setHidden:YES];
-    drawingView = [[DrawingView alloc]initWithFrame:CGRectMake(0, 300, self.view.frame.size.width, 300)];
+    drawingView = [[DrawingView alloc]initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 300)];
     [self.view addSubview:drawingView];
     self.beaconStatusLabel.text = @"Looking for beacons...";
     self.data = [[NSMutableData alloc]init];
+    [self.navigationController setNavigationBarHidden:YES];
+    [self.chatWithMCButton setHidden:YES];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -90,6 +92,7 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
     NSLog(@"Found %lu beacons", (unsigned long)[beacons count]);
     // possibly put these beacons in an array around you
     if (self.foundBeacon != NULL) {
+        [self.chatWithMCButton setHidden:NO];
         [self.beaconStatusLabel.layer removeAllAnimations];
         self.beaconStatusLabel.text = [NSString stringWithFormat:@"Found Beacon"];
         NSLog(@"%@", self.foundBeacon.description);
@@ -167,4 +170,8 @@ static NSString *UUIDBEACONKEY = @"C85D59D4-5136-409C-AE60-E7F4D70D8964";
     self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
+- (IBAction)chatWithMCButtonPressed:(id)sender {
+    MCViewController *MCChatVC = [[MCViewController alloc]init];
+    [self.navigationController pushViewController:MCChatVC animated:YES];
+}
 @end

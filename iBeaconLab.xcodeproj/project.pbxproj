@@ -10,7 +10,6 @@
 		C726DF5418751E150049FA9F /* BeacTrackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C726DF5318751E150049FA9F /* BeacTrackTest.m */; };
 		C726DF5F187534480049FA9F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C726DF5E187534480049FA9F /* Default-568h@2x.png */; };
 		C7603B111899E85900321E0D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7603B101899E85900321E0D /* MainViewController.m */; };
-		C78D091518B6EC01005ABFF7 /* MCSessionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C78D091418B6EC01005ABFF7 /* MCSessionHandler.m */; };
 		C78D1FC01854DEFE00E61CB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */; };
 		C78D1FC21854DEFE00E61CB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */; };
 		C78D1FC41854DEFE00E61CB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC31854DEFE00E61CB6 /* UIKit.framework */; };
@@ -25,8 +24,8 @@
 		C78D1FE91854DEFE00E61CB6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C78D1FE71854DEFE00E61CB6 /* InfoPlist.strings */; };
 		C78D1FFE1854E4DF00E61CB6 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */; };
 		C78D20001854E4E600E61CB6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */; };
+		C78DE86F18BC032900233E21 /* MCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C78DE86E18BC032900233E21 /* MCViewController.m */; };
 		C790ECCA189AC51E00929953 /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C790ECC9189AC51E00929953 /* DrawingView.m */; };
-		C7E8750018A9BF0C00EC3D2E /* MCPeerSenderReceivier.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E874FF18A9BF0C00EC3D2E /* MCPeerSenderReceivier.m */; };
 		C7EC58B1189DCDF9001D2220 /* BeacTracIcon4 (120).png in Resources */ = {isa = PBXBuildFile; fileRef = C7EC58AE189DCDF9001D2220 /* BeacTracIcon4 (120).png */; };
 		C7EC58B2189DCDF9001D2220 /* BeacTracIcon4 (80).png in Resources */ = {isa = PBXBuildFile; fileRef = C7EC58AF189DCDF9001D2220 /* BeacTracIcon4 (80).png */; };
 		C7EC58B3189DCDF9001D2220 /* BeacTracIcon4 (58).png in Resources */ = {isa = PBXBuildFile; fileRef = C7EC58B0189DCDF9001D2220 /* BeacTracIcon4 (58).png */; };
@@ -51,8 +50,6 @@
 		C726DF5E187534480049FA9F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C7603B0F1899E85900321E0D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C7603B101899E85900321E0D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		C78D091318B6EC01005ABFF7 /* MCSessionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCSessionHandler.h; sourceTree = "<group>"; };
-		C78D091418B6EC01005ABFF7 /* MCSessionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCSessionHandler.m; sourceTree = "<group>"; };
 		C78D1FBC1854DEFE00E61CB6 /* iBeaconLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -70,10 +67,10 @@
 		C78D1FE81854DEFE00E61CB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C78DE86D18BC032900233E21 /* MCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCViewController.h; sourceTree = "<group>"; };
+		C78DE86E18BC032900233E21 /* MCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCViewController.m; sourceTree = "<group>"; };
 		C790ECC8189AC51E00929953 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
 		C790ECC9189AC51E00929953 /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
-		C7E874FE18A9BF0C00EC3D2E /* MCPeerSenderReceivier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPeerSenderReceivier.h; sourceTree = "<group>"; };
-		C7E874FF18A9BF0C00EC3D2E /* MCPeerSenderReceivier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPeerSenderReceivier.m; sourceTree = "<group>"; };
 		C7EC58AE189DCDF9001D2220 /* BeacTracIcon4 (120).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTracIcon4 (120).png"; sourceTree = "<group>"; };
 		C7EC58AF189DCDF9001D2220 /* BeacTracIcon4 (80).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTracIcon4 (80).png"; sourceTree = "<group>"; };
 		C7EC58B0189DCDF9001D2220 /* BeacTracIcon4 (58).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BeacTracIcon4 (58).png"; sourceTree = "<group>"; };
@@ -133,10 +130,8 @@
 		C73695B518860E1E00341303 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C7E874FE18A9BF0C00EC3D2E /* MCPeerSenderReceivier.h */,
-				C7E874FF18A9BF0C00EC3D2E /* MCPeerSenderReceivier.m */,
-				C78D091318B6EC01005ABFF7 /* MCSessionHandler.h */,
-				C78D091418B6EC01005ABFF7 /* MCSessionHandler.m */,
+				C78DE86D18BC032900233E21 /* MCViewController.h */,
+				C78DE86E18BC032900233E21 /* MCViewController.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -323,12 +318,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C78DE86F18BC032900233E21 /* MCViewController.m in Sources */,
 				C7603B111899E85900321E0D /* MainViewController.m in Sources */,
 				C790ECCA189AC51E00929953 /* DrawingView.m in Sources */,
 				C78D1FD01854DEFE00E61CB6 /* AppDelegate.m in Sources */,
 				C78D1FCC1854DEFE00E61CB6 /* main.m in Sources */,
-				C78D091518B6EC01005ABFF7 /* MCSessionHandler.m in Sources */,
-				C7E8750018A9BF0C00EC3D2E /* MCPeerSenderReceivier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
