@@ -12,11 +12,11 @@
 
 @interface UUIDStore : NSObject
 {
-    NSMutableSet *allUUIDsSet;
+    NSMutableSet *allPeripheralsSet;
 }
 
 +(UUIDStore*)sharedStore;
--(NSMutableSet*)allUUIDsSet;
+-(NSMutableSet*)allPeripheralsSet;
 -(UUIDString*)createNewUUIDstring;
 -(CBPeripheral*)addNewPeripheral:(CBPeripheral*)peripheral;
 @end
