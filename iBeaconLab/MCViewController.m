@@ -18,11 +18,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     [self setUpUI];
     [self setUpMultiPeer];
 }
-
 
 -(void)setUpUI{
     self.browseButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -51,7 +49,6 @@
     // send data to connected peers
     NSError *error;
     [self.mySession sendData:data toPeers:[self.mySession connectedPeers] withMode:MCSessionSendDataUnreliable error:&error];
-    
     // append your own text to text box
     [self receiveMessage:message fromPeer:self.myPeerID];
 }
