@@ -30,7 +30,6 @@
 @property (strong, nonatomic) NSMutableData *data;
 @property BOOL findingBeacon;
 @property (strong, nonatomic) IBOutlet UILabel *beaconStatusLabel;
-@property (strong, nonatomic) IBOutlet UILabel *retrievedUUIDLabel;
 @property (strong, nonatomic) IBOutlet UILabel *transmitDistanceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *broadcastIdentityLabel;
 - (IBAction)rangeBeacon:(id)sender;

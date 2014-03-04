@@ -1,13 +1,9 @@
 //
 //  MainViewController.m
 //  iBeaconLab
-//
 //  Created by Kevin Taniguchi on 1/29/14.
 //  Copyright (c) 2014 Taniguchi. All rights reserved.
 
-/*
-    
-*/
 #import "MainViewController.h"
 
 static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";
@@ -19,13 +15,11 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";
     BOOL isTransmitting;
 }
 
-@synthesize beaconRegion, locationManager, centralManager, UUIDToPass, foundBeacon,beaconStatusLabel,findingBeacon, retrievedUUIDLabel, transmitDistanceLabel, data, chatWithMCButton;
+@synthesize beaconRegion, locationManager, centralManager, UUIDToPass, foundBeacon,beaconStatusLabel,findingBeacon, transmitDistanceLabel, data, chatWithMCButton;
 
 -(void)viewWillAppear:(BOOL)animated{
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
-    [self.retrievedUUIDLabel setHidden:YES];
-    [self.retrievedUUIDLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
     self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self.broadcastIdentityLabel setHidden:YES];
     drawingView = [[DrawingView alloc]initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 300)];
@@ -96,9 +90,6 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";
         self.beaconStatusLabel.text = [NSString stringWithFormat:@"Found Beacon"];
         NSLog(@"%@", self.foundBeacon.description);
         [self.transmitDistanceLabel setHidden:NO];
-        NSString *idString = self.foundBeacon.proximityUUID.UUIDString;
-        NSString *beaconUUID = [idString substringFromIndex:([idString length]-4)];
-        self.retrievedUUIDLabel.text = beaconUUID;
         if(self.foundBeacon.proximity == CLProximityUnknown){
             self.transmitDistanceLabel.text = @"unknown";
         } else if (self.foundBeacon.proximity == CLProximityImmediate){
@@ -167,7 +158,6 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";
 }
 
 -(void)preferredContentSizeChanged:(NSNotification*)notification{
-    [self.retrievedUUIDLabel setFont:[UIFont preferredFontForTextStyle:UIFontTextStyleBody]];
     self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 }
 
