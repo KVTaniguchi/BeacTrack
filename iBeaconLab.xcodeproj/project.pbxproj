@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C726DF5418751E150049FA9F /* BeacTrackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C726DF5318751E150049FA9F /* BeacTrackTest.m */; };
 		C7603B111899E85900321E0D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7603B101899E85900321E0D /* MainViewController.m */; };
+		C766D6F418CC336C005E81FC /* BeaconStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C766D6F318CC336C005E81FC /* BeaconStore.m */; };
+		C766D74F18CC3F6D005E81FC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C766D74E18CC3F6D005E81FC /* CoreData.framework */; };
 		C78D1FC01854DEFE00E61CB6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */; };
 		C78D1FC21854DEFE00E61CB6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */; };
 		C78D1FC41854DEFE00E61CB6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78D1FC31854DEFE00E61CB6 /* UIKit.framework */; };
@@ -46,6 +48,9 @@
 		C726DF5318751E150049FA9F /* BeacTrackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeacTrackTest.m; sourceTree = "<group>"; };
 		C7603B0F1899E85900321E0D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C7603B101899E85900321E0D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		C766D6F218CC336C005E81FC /* BeaconStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconStore.h; sourceTree = "<group>"; };
+		C766D6F318CC336C005E81FC /* BeaconStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconStore.m; sourceTree = "<group>"; };
+		C766D74E18CC3F6D005E81FC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C78D1FBC1854DEFE00E61CB6 /* iBeaconLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iBeaconLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C78D1FC11854DEFE00E61CB6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C766D74F18CC3F6D005E81FC /* CoreData.framework in Frameworks */,
 				C78D20001854E4E600E61CB6 /* CoreLocation.framework in Frameworks */,
 				C78D1FFE1854E4DF00E61CB6 /* CoreBluetooth.framework in Frameworks */,
 				C78D1FC21854DEFE00E61CB6 /* CoreGraphics.framework in Frameworks */,
@@ -128,6 +134,8 @@
 			children = (
 				C78DE86D18BC032900233E21 /* MCViewController.h */,
 				C78DE86E18BC032900233E21 /* MCViewController.m */,
+				C766D6F218CC336C005E81FC /* BeaconStore.h */,
+				C766D6F318CC336C005E81FC /* BeaconStore.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -156,6 +164,7 @@
 		C78D1FBE1854DEFE00E61CB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C766D74E18CC3F6D005E81FC /* CoreData.framework */,
 				C78D1FFF1854E4E600E61CB6 /* CoreLocation.framework */,
 				C78D1FFD1854E4DF00E61CB6 /* CoreBluetooth.framework */,
 				C78D1FBF1854DEFE00E61CB6 /* Foundation.framework */,
@@ -252,9 +261,19 @@
 		C78D1FB41854DEFE00E61CB6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Taniguchi;
 				TargetAttributes = {
+					C78D1FBB1854DEFE00E61CB6 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.iOS = {
+								enabled = 0;
+							};
+						};
+					};
 					C78D1FDC1854DEFE00E61CB6 = {
 						TestTargetID = C78D1FBB1854DEFE00E61CB6;
 					};
@@ -315,6 +334,7 @@
 				C790ECCA189AC51E00929953 /* DrawingView.m in Sources */,
 				C78D1FD01854DEFE00E61CB6 /* AppDelegate.m in Sources */,
 				C78D1FCC1854DEFE00E61CB6 /* main.m in Sources */,
+				C766D6F418CC336C005E81FC /* BeaconStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +417,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "CADAEB8E-F035-45B2-9856-C7BF47C68DFE";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -442,7 +462,6 @@
 		C78D1FEF1854DEFE00E61CB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "";
@@ -461,7 +480,6 @@
 		C78D1FF01854DEFE00E61CB6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "";

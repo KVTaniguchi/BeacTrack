@@ -6,7 +6,7 @@
 
 #import "MainViewController.h"
 
-static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";
+static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
 
 @implementation MainViewController{
     dispatch_queue_t backgroundQueue;
@@ -40,56 +40,18 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";
 
 // look for services that match MY transfer service UUID - in other words other versions of this same app
 // call this method when the user agrees to connect with the discovered other transfer UUID 
-- (IBAction)rangeBeacon:(id)sender {
-    [self startiBeaconConfirmerWithUUIDString:UUIDADVERT];
-}
 
--(void)startiBeaconConfirmerWithUUIDString:(NSString *)passedInUUIDString{
-    self.locationManager = [[CLLocationManager alloc]init];
-    self.locationManager.delegate = self;
-    NSUUID *uuidToPass = [[NSUUID alloc]initWithUUIDString:passedInUUIDString];
-    self.beaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:uuidToPass identifier:@"asdfasdf"];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.locationManager startMonitoringForRegion:self.beaconRegion];
-        [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
-    });
-}
 
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    NSLog(@"ERROR: %@", error.description);
-}
-
-- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
-    NSLog(@"%@",error);
-}
-
--(void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region{
-    NSLog(@"locationManager did start monitoring");
-    [self.locationManager startRangingBeaconsInRegion:beaconRegion];
-}
-
--(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
-    NSLog(@"did enter region called");
-    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
-}
-
--(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
-    [self.locationManager stopMonitoringForRegion:self.beaconRegion];
-}
-
--(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region{
+-(void)setUpBeaconViewingData{
     //return the beaconFound propreeties
-    NSLog(@"did range beacons called");
-    self.foundBeacon = [[CLBeacon alloc]init];
-    self.foundBeacon = [beacons lastObject];
-    NSLog(@"Found %lu beacons", (unsigned long)[beacons count]);
     // possibly put these beacons in an array around you
-    if (self.foundBeacon != NULL) {
-        [self.chatWithMCButton setHidden:NO];
-        [self.beaconStatusLabel.layer removeAllAnimations];
-        self.beaconStatusLabel.text = [NSString stringWithFormat:@"Found Beacon"];
-        NSLog(@"%@", self.foundBeacon.description);
-        [self.transmitDistanceLabel setHidden:NO];
+  //  self.foundBeacon = [[[BeaconStore sharedStore]allBeacons]lastObject];
+    [self.view addSubview:drawingView];
+    [self.chatWithMCButton setHidden:NO];
+    [self.beaconStatusLabel.layer removeAllAnimations];
+    self.beaconStatusLabel.text = [NSString stringWithFormat:@"Found Beacon"];
+    NSLog(@"%@", self.foundBeacon.description);
+    [self.transmitDistanceLabel setHidden:NO];
         if(self.foundBeacon.proximity == CLProximityUnknown){
             self.transmitDistanceLabel.text = @"unknown";
         } else if (self.foundBeacon.proximity == CLProximityImmediate){
@@ -113,12 +75,6 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";
             [self glowEffect:drawingView.layer withRect:drawingRect];
             [drawingView setNeedsDisplay];
         }
-    }
-    else if(self.foundBeacon == NULL){
-        NSLog(@"did not find a beacon");
-        self.beaconStatusLabel.text = @"Looking for Beacons";
-        [self glowEffect:beaconStatusLabel.layer withRect:beaconStatusLabel.frame];
-    }
 }
 
 -(void)glowEffect:(CALayer*)layer withRect:(CGRect)rect{
@@ -132,6 +88,7 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";
     [layer addAnimation:glowEffect forKey:@"animateOpacity"];
     [self.view setNeedsDisplay];
 }
+
 // TRANSMITTING A SIGNAL
 -(void)startTransmitter{
     NSUUID *advertisingUUID = [[NSUUID alloc]initWithUUIDString:UUIDADVERT];

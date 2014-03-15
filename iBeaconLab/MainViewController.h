@@ -13,6 +13,7 @@
 #import "DrawingView.h"
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 #import "MCViewController.h"
+#import "BeaconStore.h"
 
 @interface MainViewController : UIViewController <CLLocationManagerDelegate, CBPeripheralManagerDelegate, UITableViewDelegate, CBPeripheralDelegate>
 {
@@ -32,12 +33,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *beaconStatusLabel;
 @property (strong, nonatomic) IBOutlet UILabel *transmitDistanceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *broadcastIdentityLabel;
-- (IBAction)rangeBeacon:(id)sender;
--(void)startiBeaconConfirmerWithUUIDString:(NSString*)passedInUUIDString;
 -(void)glowEffect:(CALayer*)layer withRect:(CGRect)rect;
 @property (strong, nonatomic) MCPeerID *myPeerID;
 @property (strong, nonatomic) IBOutlet UIButton *chatWithMCButton;
 - (IBAction)chatWithMCButtonPressed:(id)sender;
-
+-(void)setUpBeaconViewingData;
 
 @end
