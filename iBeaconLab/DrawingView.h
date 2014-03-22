@@ -10,7 +10,5 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface DrawingView : UIView
-
 @property CGFloat circleRadius;
-
 @end

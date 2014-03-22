@@ -7,27 +7,42 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <QuartzCore/QuartzCore.h>
 #import "DrawingView.h"
 #import <MultipeerConnectivity/MultipeerConnectivity.h>
 #import "MCViewController.h"
 #import "BeaconStore.h"
+#import "Beacon.h"
 
-@interface MainViewController : UIViewController <CLLocationManagerDelegate, CBPeripheralManagerDelegate, UITableViewDelegate, CBPeripheralDelegate>
+
+@class MainViewController;
+@protocol MainVCBeaconListenerDelegate <NSObject>
+
+-(NSInteger)upDatedRSSI:(NSInteger)rssi;
+
+@end
+
+@interface MainViewController : UIViewController <CBPeripheralManagerDelegate, CBPeripheralDelegate, CLLocationManagerDelegate>
 {
     NSString *newUUIDString;
     CBPeripheral *newPeripheral;
     NSUUID *grabbedUUID;
     NSMutableSet *setOfUniquePeriperals;
     DrawingView *drawingView;
+    NSInteger rssiFromBeaconStore;
+    Beacon *newBeacon;
+    
+    BOOL _isInRegion;
+    NSMutableSet *collectedBeacons;
 }
+
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
+
 @property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) NSString *UUIDToPass;
-@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
-@property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) CLBeacon *foundBeacon;
 @property (strong, nonatomic) NSMutableData *data;
 @property BOOL findingBeacon;
 @property (strong, nonatomic) IBOutlet UILabel *beaconStatusLabel;

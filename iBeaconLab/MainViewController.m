@@ -15,9 +15,15 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
     BOOL isTransmitting;
 }
 
-@synthesize beaconRegion, locationManager, centralManager, UUIDToPass, foundBeacon,beaconStatusLabel,findingBeacon, transmitDistanceLabel, data, chatWithMCButton;
+@synthesize  centralManager, UUIDToPass,beaconStatusLabel,findingBeacon, transmitDistanceLabel, data, chatWithMCButton;
 
 -(void)viewWillAppear:(BOOL)animated{
+    
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
     self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
@@ -28,7 +34,108 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
     self.data = [[NSMutableData alloc]init];
     [self.navigationController setNavigationBarHidden:NO];
     [self.chatWithMCButton setHidden:YES];
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _isInRegion = NO;
+        self.locationManager = [CLLocationManager new];
+        self.locationManager.delegate = self;
+        //    static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";
+        //    static NSString *UUIDADVERT = @"A6AA4D3A-9A27-921B-5DA7-8E704FAA936A";  // from leDict.plist
+        // UUID for snf device type ibeacon prox uuid: E558D748-E36D-46E9-8D71-AD6492173755
+        // snf device id: A6AA4D3A-9A27-921B-5DA7-8E704FAA936A
+        // mac beacon D0548F44-7170-4BAA-AFDA-7F82076E6A25
+        //static NSString *UUIDADVERT = @"A6AA4D3A-9A27-921B-5DA7-8E704FAA936A";
+        static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A25";  // from value for device id
+        NSUUID *uuid = [[NSUUID alloc]initWithUUIDString:UUIDADVERT];
+        self.beaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:uuid major:1 minor:1 identifier:@"beacon"];
+        self.beaconRegion.notifyEntryStateOnDisplay = NO;
+        self.beaconRegion.notifyOnEntry = YES;
+        self.beaconRegion.notifyOnExit = YES;
+        [self.locationManager requestStateForRegion:self.beaconRegion];
+        [self.locationManager startMonitoringForRegion:self.beaconRegion];
+        collectedBeacons = [[NSMutableSet alloc]init];
+    });
 }
+
+
+-(void)_sendEnterLocalNotification{
+    UILocalNotification *enterNotification = [[UILocalNotification alloc]init];
+    enterNotification.alertBody = @"Inside Beacon Region";
+    enterNotification.alertAction = @"Open";
+    [[UIApplication sharedApplication]scheduleLocalNotification:enterNotification];
+    _isInRegion = YES;
+}
+
+-(void)_sendExitLocalNotification{
+    UILocalNotification *leaveNotification = [[UILocalNotification alloc]init];
+    leaveNotification.alertBody = @"Left Beacon Region";
+    leaveNotification.alertAction = @"Open";
+    [[UIApplication sharedApplication]scheduleLocalNotification:leaveNotification];
+    _isInRegion = NO;
+}
+
+-(void)_updateUIForState:(CLRegionState)state{
+    if (state == CLRegionStateInside) {
+    }
+    else if (state == CLRegionStateOutside){
+    }
+}
+
+-(void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region{
+    [self _updateUIForState:state];
+    if (state == CLRegionStateInside) {
+        [self _sendEnterLocalNotification];
+    }
+    else{
+        [self _sendExitLocalNotification];
+    }
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region{
+    if ([beacons count] > 0) {
+        CLBeacon *beacon = [beacons lastObject];
+        if (![collectedBeacons containsObject:beacon.proximityUUID]) {
+            newBeacon = [[BeaconStore sharedStore]addNewBeaconWithUUID:[NSString stringWithFormat:@"%@", beacon.proximityUUID] andRSSI:beacon.rssi];
+            [collectedBeacons addObject:beacon.proximityUUID];
+        }
+        rssiFromBeaconStore = beacon.rssi;
+        [self setUpBeaconViewingData];
+        _isInRegion = YES;
+    }
+    else{
+        _isInRegion = NO;
+    }
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"ERROR: %@", error.description);
+}
+
+- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
+    NSLog(@"%@",error);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region{
+    NSLog(@"didd start monotring called: locationManager did start monitoring");
+    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
+    NSLog(@"did enter region called");
+    _isInRegion = YES;
+    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+    [self _sendEnterLocalNotification];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region{
+    NSLog(@"did exit the region");
+    _isInRegion = NO;
+    [self _sendExitLocalNotification];
+}
+
 
 -(void)viewDidAppear:(BOOL)animated{
     backgroundQueue = dispatch_queue_create("startTransmitting", NULL);
@@ -38,37 +145,17 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
     [self glowEffect:beaconStatusLabel.layer withRect:beaconStatusLabel.frame];
 }
 
-// look for services that match MY transfer service UUID - in other words other versions of this same app
-// call this method when the user agrees to connect with the discovered other transfer UUID 
-
-
 -(void)setUpBeaconViewingData{
-    //return the beaconFound propreeties
-    // possibly put these beacons in an array around you
-  //  self.foundBeacon = [[[BeaconStore sharedStore]allBeacons]lastObject];
     [self.view addSubview:drawingView];
     [self.chatWithMCButton setHidden:NO];
     [self.beaconStatusLabel.layer removeAllAnimations];
     self.beaconStatusLabel.text = [NSString stringWithFormat:@"Found Beacon"];
-    NSLog(@"%@", self.foundBeacon.description);
     [self.transmitDistanceLabel setHidden:NO];
-        if(self.foundBeacon.proximity == CLProximityUnknown){
-            self.transmitDistanceLabel.text = @"unknown";
-        } else if (self.foundBeacon.proximity == CLProximityImmediate){
-            self.transmitDistanceLabel.text = @"immediate";
-            [self.chatWithMCButton setHidden:NO];
-            // kick off MCPeer Connection
-        } else if (self.foundBeacon.proximity == CLProximityNear){
-            self.transmitDistanceLabel.text = @"near";
-            [self.chatWithMCButton setHidden:NO];
-        } else if (self.foundBeacon.proximity == CLProximityFar){
-            self.transmitDistanceLabel.text = @"far";
-        }
-        NSUInteger posRSSI = ABS(self.foundBeacon.rssi);
+        NSInteger posRSSI = ABS(rssiFromBeaconStore);
         if (posRSSI ==  0) {
             self.beaconStatusLabel.text = @"Signal Lost";
         }
-        else if(self.foundBeacon != NULL){
+        else if(rssiFromBeaconStore != 0){
             NSLog(@"RSS value is: %ld", (long)posRSSI);
             drawingView.circleRadius = 5000 / posRSSI;
             CGRect drawingRect = CGRectMake(0, 300, self.view.frame.size.width, 300);
@@ -97,12 +184,11 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
     peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil];
     beaconPeripheralData = [[NSDictionary alloc]init];
     beaconPeripheralData = [myBeaconRegion peripheralDataWithMeasuredPower:nil];
-    self.broadcastIdentityLabel.text = [NSString stringWithFormat:@"%@",myBeaconRegion.identifier];
+    self.broadcastIdentityLabel.text = [NSString stringWithFormat:@"Your Transmit ID: %@",myBeaconRegion.identifier];
     [self.broadcastIdentityLabel setHidden:NO];
 }
 
 -(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral{
-    NSLog(@"peripheral manager did update state VC");
     if(peripheral.state == CBPeripheralManagerStatePoweredOn){
         [peripheralManager startAdvertising:beaconPeripheralData];
         NSLog(@"peripheral manager started advertising");

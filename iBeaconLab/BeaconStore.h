@@ -8,12 +8,20 @@
 
 #import <Foundation/Foundation.h>
 @import CoreLocation;
+@import CoreData;
+#import "Beacon.h"
 
 @interface BeaconStore : NSObject{
     NSMutableArray *allBeacons;
+    NSManagedObjectModel *model;
 }
 +(BeaconStore*)sharedStore;
 -(NSArray*)allBeacons;
--(CLBeacon*)addNewBeacon:(CLBeacon*)b;
+-(void)loadAllBeacons;
+-(Beacon*)addNewBeaconWithUUID:(NSString*)uuidString andRSSI:(NSUInteger)rssi;
+-(NSString*)itemArchivePath;
+-(void)clearAllBeacons;
+-(Beacon*)fetchBeaconWithUUID:(NSString*)uuidString;
 @property (nonatomic, strong) NSMutableArray *foundBeacons;
+@property (nonatomic, strong) NSManagedObjectContext *context;
 @end

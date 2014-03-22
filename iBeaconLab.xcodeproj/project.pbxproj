@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C726DF5418751E150049FA9F /* BeacTrackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C726DF5318751E150049FA9F /* BeacTrackTest.m */; };
+		C73530E618DA821B007454E5 /* BeaconData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C73530E418DA821B007454E5 /* BeaconData.xcdatamodeld */; };
+		C74E63DE18DC498900967689 /* Beacon.m in Sources */ = {isa = PBXBuildFile; fileRef = C74E63DD18DC498900967689 /* Beacon.m */; };
 		C7603B111899E85900321E0D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7603B101899E85900321E0D /* MainViewController.m */; };
 		C766D6F418CC336C005E81FC /* BeaconStore.m in Sources */ = {isa = PBXBuildFile; fileRef = C766D6F318CC336C005E81FC /* BeaconStore.m */; };
 		C766D74F18CC3F6D005E81FC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C766D74E18CC3F6D005E81FC /* CoreData.framework */; };
@@ -46,6 +48,14 @@
 
 /* Begin PBXFileReference section */
 		C726DF5318751E150049FA9F /* BeacTrackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeacTrackTest.m; sourceTree = "<group>"; };
+		C73530E518DA821B007454E5 /* BeaconData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BeaconData.xcdatamodel; sourceTree = "<group>"; };
+		C73530EA18DA92B5007454E5 /* BeaconData2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BeaconData2.xcdatamodel; sourceTree = "<group>"; };
+		C74E63D218DBD7E900967689 /* BeaconData3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BeaconData3.xcdatamodel; sourceTree = "<group>"; };
+		C74E63D618DBD9D800967689 /* BeaconData4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BeaconData4.xcdatamodel; sourceTree = "<group>"; };
+		C74E63D718DBD9F000967689 /* BeaconData5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BeaconData5.xcdatamodel; sourceTree = "<group>"; };
+		C74E63DB18DBDAFF00967689 /* BeaconData6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BeaconData6.xcdatamodel; sourceTree = "<group>"; };
+		C74E63DC18DC498900967689 /* Beacon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Beacon.h; path = ../Beacon.h; sourceTree = "<group>"; };
+		C74E63DD18DC498900967689 /* Beacon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Beacon.m; path = ../Beacon.m; sourceTree = "<group>"; };
 		C7603B0F1899E85900321E0D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C7603B101899E85900321E0D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		C766D6F218CC336C005E81FC /* BeaconStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconStore.h; sourceTree = "<group>"; };
@@ -136,6 +146,9 @@
 				C78DE86E18BC032900233E21 /* MCViewController.m */,
 				C766D6F218CC336C005E81FC /* BeaconStore.h */,
 				C766D6F318CC336C005E81FC /* BeaconStore.m */,
+				C74E63DC18DC498900967689 /* Beacon.h */,
+				C74E63DD18DC498900967689 /* Beacon.m */,
+				C73530E418DA821B007454E5 /* BeaconData.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -332,6 +345,8 @@
 				C78DE86F18BC032900233E21 /* MCViewController.m in Sources */,
 				C7603B111899E85900321E0D /* MainViewController.m in Sources */,
 				C790ECCA189AC51E00929953 /* DrawingView.m in Sources */,
+				C74E63DE18DC498900967689 /* Beacon.m in Sources */,
+				C73530E618DA821B007454E5 /* BeaconData.xcdatamodeld in Sources */,
 				C78D1FD01854DEFE00E61CB6 /* AppDelegate.m in Sources */,
 				C78D1FCC1854DEFE00E61CB6 /* main.m in Sources */,
 				C766D6F418CC336C005E81FC /* BeaconStore.m in Sources */,
@@ -568,6 +583,24 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C73530E418DA821B007454E5 /* BeaconData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C74E63D718DBD9F000967689 /* BeaconData5.xcdatamodel */,
+				C74E63DB18DBDAFF00967689 /* BeaconData6.xcdatamodel */,
+				C74E63D618DBD9D800967689 /* BeaconData4.xcdatamodel */,
+				C74E63D218DBD7E900967689 /* BeaconData3.xcdatamodel */,
+				C73530EA18DA92B5007454E5 /* BeaconData2.xcdatamodel */,
+				C73530E518DA821B007454E5 /* BeaconData.xcdatamodel */,
+			);
+			currentVersion = C74E63D718DBD9F000967689 /* BeaconData5.xcdatamodel */;
+			path = BeaconData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C78D1FB41854DEFE00E61CB6 /* Project object */;
 }
