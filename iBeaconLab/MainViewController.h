@@ -14,7 +14,7 @@
 #import "MCViewController.h"
 #import "BeaconStore.h"
 #import "Beacon.h"
-
+#import <iAd/iAd.h>
 
 @class MainViewController;
 @protocol MainVCBeaconListenerDelegate <NSObject>
@@ -23,7 +23,7 @@
 
 @end
 
-@interface MainViewController : UIViewController <CBPeripheralManagerDelegate, CBPeripheralDelegate, CLLocationManagerDelegate>
+@interface MainViewController : UIViewController <CBPeripheralManagerDelegate, CBPeripheralDelegate, CLLocationManagerDelegate, ADBannerViewDelegate>
 {
     NSString *newUUIDString;
     CBPeripheral *newPeripheral;
@@ -37,16 +37,15 @@
     NSMutableSet *collectedBeacons;
 }
 
-
+@property (strong, nonatomic) IBOutlet UILabel *rssiLabel;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLBeaconRegion *beaconRegion;
-
+@property (strong, nonatomic) IBOutlet ADBannerView *banner;
 @property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) NSString *UUIDToPass;
 @property (strong, nonatomic) NSMutableData *data;
 @property BOOL findingBeacon;
 @property (strong, nonatomic) IBOutlet UILabel *beaconStatusLabel;
-@property (strong, nonatomic) IBOutlet UILabel *transmitDistanceLabel;
 @property (strong, nonatomic) IBOutlet UILabel *broadcastIdentityLabel;
 -(void)glowEffect:(CALayer*)layer withRect:(CGRect)rect;
 @property (strong, nonatomic) MCPeerID *myPeerID;

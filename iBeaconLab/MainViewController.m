@@ -15,21 +15,18 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
     BOOL isTransmitting;
 }
 
-@synthesize  centralManager, UUIDToPass,beaconStatusLabel,findingBeacon, transmitDistanceLabel, data, chatWithMCButton;
+@synthesize  centralManager, UUIDToPass,beaconStatusLabel,findingBeacon, data, chatWithMCButton, banner, rssiLabel;
 
 -(void)viewWillAppear:(BOOL)animated{
-    
-    
+    self.banner = [[ADBannerView alloc]init];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new]
                                                   forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
-    self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     [self.broadcastIdentityLabel setHidden:YES];
     drawingView = [[DrawingView alloc]initWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 300)];
-    [self.view addSubview:drawingView];
     self.beaconStatusLabel.text = @"Looking for beacons...";
     self.data = [[NSMutableData alloc]init];
     [self.navigationController setNavigationBarHidden:NO];
@@ -58,6 +55,22 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
     });
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    backgroundQueue = dispatch_queue_create("startTransmitting", NULL);
+    dispatch_async(backgroundQueue, ^(void){
+        [self startTransmitter];
+    });
+    [self glowEffect:beaconStatusLabel.layer withRect:beaconStatusLabel.frame];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [drawingView removeFromSuperview];
+    
+}
+
+-(void)bannerViewWillLoadAd:(ADBannerView *)banner{
+    [drawingView removeFromSuperview];
+}
 
 -(void)_sendEnterLocalNotification{
     UILocalNotification *enterNotification = [[UILocalNotification alloc]init];
@@ -85,10 +98,12 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
 -(void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region{
     [self _updateUIForState:state];
     if (state == CLRegionStateInside) {
-        [self _sendEnterLocalNotification];
+        _isInRegion = YES;
+        return;
     }
-    else{
-        [self _sendExitLocalNotification];
+    else if (state == CLRegionStateOutside){
+        _isInRegion = NO;
+        return;
     }
 }
 
@@ -96,11 +111,13 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
 -(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region{
     if ([beacons count] > 0) {
         CLBeacon *beacon = [beacons lastObject];
+        [self.view addSubview:drawingView];
         if (![collectedBeacons containsObject:beacon.proximityUUID]) {
             newBeacon = [[BeaconStore sharedStore]addNewBeaconWithUUID:[NSString stringWithFormat:@"%@", beacon.proximityUUID] andRSSI:beacon.rssi];
             [collectedBeacons addObject:beacon.proximityUUID];
         }
         rssiFromBeaconStore = beacon.rssi;
+        self.rssiLabel.text = [NSString stringWithFormat:@"%ld",(long)ABS(rssiFromBeaconStore)];
         [self setUpBeaconViewingData];
         _isInRegion = YES;
     }
@@ -136,31 +153,24 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
     [self _sendExitLocalNotification];
 }
 
-
--(void)viewDidAppear:(BOOL)animated{
-    backgroundQueue = dispatch_queue_create("startTransmitting", NULL);
-    dispatch_async(backgroundQueue, ^(void){
-        [self startTransmitter];
-    });
-    [self glowEffect:beaconStatusLabel.layer withRect:beaconStatusLabel.frame];
-}
-
 -(void)setUpBeaconViewingData{
-    [self.view addSubview:drawingView];
     [self.chatWithMCButton setHidden:NO];
     [self.beaconStatusLabel.layer removeAllAnimations];
     self.beaconStatusLabel.text = [NSString stringWithFormat:@"Found Beacon"];
-    [self.transmitDistanceLabel setHidden:NO];
         NSInteger posRSSI = ABS(rssiFromBeaconStore);
         if (posRSSI ==  0) {
             self.beaconStatusLabel.text = @"Signal Lost";
+            self.rssiLabel.text = [NSString stringWithFormat:@"%ld",(long)posRSSI];
+            [drawingView removeFromSuperview];
+            [self.chatWithMCButton setHidden:YES];
         }
         else if(rssiFromBeaconStore != 0){
             NSLog(@"RSS value is: %ld", (long)posRSSI);
             drawingView.circleRadius = 5000 / posRSSI;
-            CGRect drawingRect = CGRectMake(0, 300, self.view.frame.size.width, 300);
+            CGRect drawingRect = CGRectMake(0, 300, self.view.frame.size.width, 400);
             [self glowEffect:drawingView.layer withRect:drawingRect];
             [drawingView setNeedsDisplay];
+            [self.chatWithMCButton setHidden:NO];
         }
 }
 
@@ -201,11 +211,12 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
 }
 
 -(void)preferredContentSizeChanged:(NSNotification*)notification{
-    self.transmitDistanceLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+
 }
 
 - (IBAction)chatWithMCButtonPressed:(id)sender {
     MCViewController *MCChatVC = [[MCViewController alloc]init];
+    [drawingView setHidden:YES];
     [drawingView removeFromSuperview];
     [self.navigationController pushViewController:MCChatVC animated:YES];
 }

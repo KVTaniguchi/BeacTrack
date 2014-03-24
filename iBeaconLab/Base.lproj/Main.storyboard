@@ -16,31 +16,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="broadcastID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjr-lv-mnP">
-                                <rect key="frame" x="28" y="51" width="252" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="broadcastID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wjr-lv-mnP">
+                                <rect key="frame" x="0.0" y="15" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="svn-QM-hOk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRM-hZ-Kos">
-                                <rect key="frame" x="20" y="128" width="280" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRM-hZ-Kos">
+                                <rect key="frame" x="20" y="63" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="yyR-CO-w51">
+                                <rect key="frame" x="0.0" y="520" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="R7W-tW-Y7Q"/>
+                                </constraints>
+                            </adBannerView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSSI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQf-0B-dpG">
+                                <rect key="frame" x="139" y="105" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="5zJ-J5-ghh"/>
+                                    <constraint firstAttribute="height" constant="21" id="tsO-g3-eGA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bg-Mi-7jf">
+                                <rect key="frame" x="120" y="146" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Chat">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="chatWithMCButtonPressed:" destination="QBO-5z-lpg" eventType="touchUpInside" id="Rbi-BZ-1uS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="yyR-CO-w51" secondAttribute="bottom" constant="-2" id="84o-EV-pRs"/>
+                            <constraint firstItem="wjr-lv-mnP" firstAttribute="leading" secondItem="yyR-CO-w51" secondAttribute="leading" id="A4E-F8-miJ"/>
+                            <constraint firstItem="HRM-hZ-Kos" firstAttribute="top" secondItem="wjr-lv-mnP" secondAttribute="bottom" constant="8" symbolic="YES" id="KJx-0w-veo"/>
+                            <constraint firstItem="wjr-lv-mnP" firstAttribute="top" secondItem="0KR-CJ-KyN" secondAttribute="top" constant="15" id="LVa-Gr-s0O"/>
+                            <constraint firstAttribute="trailing" secondItem="HRM-hZ-Kos" secondAttribute="trailing" constant="20" symbolic="YES" id="LbK-oS-F66"/>
+                            <constraint firstItem="wjr-lv-mnP" firstAttribute="centerX" secondItem="HRM-hZ-Kos" secondAttribute="centerX" id="MoH-GS-RZR"/>
+                            <constraint firstItem="hQf-0B-dpG" firstAttribute="centerX" secondItem="HRM-hZ-Kos" secondAttribute="centerX" id="PYW-xG-Jwf"/>
+                            <constraint firstItem="hQf-0B-dpG" firstAttribute="top" secondItem="HRM-hZ-Kos" secondAttribute="bottom" constant="21" id="ejK-Au-X4S"/>
+                            <constraint firstItem="wjr-lv-mnP" firstAttribute="trailing" secondItem="yyR-CO-w51" secondAttribute="trailing" id="ryc-3u-QMI"/>
+                            <constraint firstItem="wjr-lv-mnP" firstAttribute="leading" secondItem="0KR-CJ-KyN" secondAttribute="leading" id="tT7-gl-Xwj"/>
+                            <constraint firstItem="HRM-hZ-Kos" firstAttribute="leading" secondItem="0KR-CJ-KyN" secondAttribute="leading" constant="20" symbolic="YES" id="xJo-KN-1PK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fkr-gw-QWZ"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="banner" destination="yyR-CO-w51" id="vur-WC-I9f"/>
                         <outlet property="beaconStatusLabel" destination="HRM-hZ-Kos" id="B3O-am-gqr"/>
                         <outlet property="broadcastIdentityLabel" destination="wjr-lv-mnP" id="Pb3-Up-6Bh"/>
+                        <outlet property="chatWithMCButton" destination="8Bg-Mi-7jf" id="ZcW-Np-JJV"/>
+                        <outlet property="rssiLabel" destination="hQf-0B-dpG" id="xzF-CD-jVx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x8H-U5-ZXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
