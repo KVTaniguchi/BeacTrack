@@ -14,7 +14,6 @@
 #import "MCViewController.h"
 #import "BeaconStore.h"
 #import "Beacon.h"
-#import <iAd/iAd.h>
 
 @class MainViewController;
 @protocol MainVCBeaconListenerDelegate <NSObject>
@@ -23,7 +22,7 @@
 
 @end
 
-@interface MainViewController : UIViewController <CBPeripheralManagerDelegate, CBPeripheralDelegate, CLLocationManagerDelegate, ADBannerViewDelegate>
+@interface MainViewController : UIViewController <CBPeripheralManagerDelegate, CBPeripheralDelegate, CLLocationManagerDelegate>
 {
     NSString *newUUIDString;
     CBPeripheral *newPeripheral;
@@ -39,8 +38,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *rssiLabel;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
-@property (strong, nonatomic) IBOutlet ADBannerView *banner;
+@property (strong, nonatomic) CLBeaconRegion *rangingBeaconRegion;
+@property (strong, nonatomic) CLBeaconRegion *transmitBeaconRegion;
 @property (strong, nonatomic) CBCentralManager *centralManager;
 @property (strong, nonatomic) NSString *UUIDToPass;
 @property (strong, nonatomic) NSMutableData *data;

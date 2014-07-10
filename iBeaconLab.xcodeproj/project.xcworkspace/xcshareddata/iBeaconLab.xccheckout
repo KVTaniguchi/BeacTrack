@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>A9B58520-F664-4152-B819-C253580C44E6</string>
+	<string>2189479B-C8B8-4F3A-86AB-160A46E6EA79</string>
 	<key>IDESourceControlProjectName</key>
 	<string>iBeaconLab</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>2EAE1126-E479-4FEA-B7F7-AAD61789AC9D</key>
+		<key>EE00A94C-9476-4084-A40F-5325B438EE39</key>
 		<string>https://github.com/KVTaniguchi/BeacTrack.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>iBeaconLab.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>2EAE1126-E479-4FEA-B7F7-AAD61789AC9D</key>
+		<key>EE00A94C-9476-4084-A40F-5325B438EE39</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>2EAE1126-E479-4FEA-B7F7-AAD61789AC9D</string>
+	<string>EE00A94C-9476-4084-A40F-5325B438EE39</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2EAE1126-E479-4FEA-B7F7-AAD61789AC9D</string>
+			<string>EE00A94C-9476-4084-A40F-5325B438EE39</string>
 			<key>IDESourceControlWCCName</key>
 			<string>BeacTrack</string>
 		</dict>

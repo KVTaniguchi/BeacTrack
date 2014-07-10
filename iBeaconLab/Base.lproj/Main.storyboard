@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xon-ZD-LbV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xon-ZD-LbV">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -33,13 +33,6 @@
                                 <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="yyR-CO-w51">
-                                <rect key="frame" x="0.0" y="520" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="R7W-tW-Y7Q"/>
-                                </constraints>
-                            </adBannerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSSI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQf-0B-dpG">
                                 <rect key="frame" x="139" y="105" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -54,8 +47,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bg-Mi-7jf">
                                 <rect key="frame" x="120" y="146" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Chat">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -66,15 +60,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="yyR-CO-w51" secondAttribute="bottom" constant="-2" id="84o-EV-pRs"/>
-                            <constraint firstItem="wjr-lv-mnP" firstAttribute="leading" secondItem="yyR-CO-w51" secondAttribute="leading" id="A4E-F8-miJ"/>
                             <constraint firstItem="HRM-hZ-Kos" firstAttribute="top" secondItem="wjr-lv-mnP" secondAttribute="bottom" constant="8" symbolic="YES" id="KJx-0w-veo"/>
                             <constraint firstItem="wjr-lv-mnP" firstAttribute="top" secondItem="0KR-CJ-KyN" secondAttribute="top" constant="15" id="LVa-Gr-s0O"/>
                             <constraint firstAttribute="trailing" secondItem="HRM-hZ-Kos" secondAttribute="trailing" constant="20" symbolic="YES" id="LbK-oS-F66"/>
                             <constraint firstItem="wjr-lv-mnP" firstAttribute="centerX" secondItem="HRM-hZ-Kos" secondAttribute="centerX" id="MoH-GS-RZR"/>
                             <constraint firstItem="hQf-0B-dpG" firstAttribute="centerX" secondItem="HRM-hZ-Kos" secondAttribute="centerX" id="PYW-xG-Jwf"/>
                             <constraint firstItem="hQf-0B-dpG" firstAttribute="top" secondItem="HRM-hZ-Kos" secondAttribute="bottom" constant="21" id="ejK-Au-X4S"/>
-                            <constraint firstItem="wjr-lv-mnP" firstAttribute="trailing" secondItem="yyR-CO-w51" secondAttribute="trailing" id="ryc-3u-QMI"/>
                             <constraint firstItem="wjr-lv-mnP" firstAttribute="leading" secondItem="0KR-CJ-KyN" secondAttribute="leading" id="tT7-gl-Xwj"/>
                             <constraint firstItem="HRM-hZ-Kos" firstAttribute="leading" secondItem="0KR-CJ-KyN" secondAttribute="leading" constant="20" symbolic="YES" id="xJo-KN-1PK"/>
                         </constraints>
@@ -84,7 +75,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
-                        <outlet property="banner" destination="yyR-CO-w51" id="vur-WC-I9f"/>
                         <outlet property="beaconStatusLabel" destination="HRM-hZ-Kos" id="B3O-am-gqr"/>
                         <outlet property="broadcastIdentityLabel" destination="wjr-lv-mnP" id="Pb3-Up-6Bh"/>
                         <outlet property="chatWithMCButton" destination="8Bg-Mi-7jf" id="ZcW-Np-JJV"/>
