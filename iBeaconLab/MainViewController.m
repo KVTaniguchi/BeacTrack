@@ -98,7 +98,6 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
     }
 }
 
-
 -(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region{
     if ([beacons count] > 0) {
         NSLog(@"did range beacons: %@", beacons.description);
@@ -117,7 +116,6 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
         _isInRegion = NO;
     }
 }
-
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"ERROR: %@", error.description);
@@ -157,7 +155,6 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
             [self.chatWithMCButton setHidden:YES];
         }
         else if(rssiFromBeaconStore != 0){
-            NSLog(@"RSS value is: %ld", (long)posRSSI);
             drawingView.circleRadius = 5000 / posRSSI;
             CGRect drawingRect = CGRectMake(0, 300, self.view.frame.size.width, 400);
             [self glowEffect:drawingView.layer withRect:drawingRect];
@@ -178,13 +175,9 @@ static NSString *UUIDADVERT = @"D0548F44-7170-4BAA-AFDA-7F82076E6A26";
     [self.view setNeedsDisplay];
 }
 
-
-
-// TRANSMITTING A SIGNAL
 -(void)startTransmitter{
     NSLog(@"started transmitter");
     NSUUID *advertisingUUID = [[NSUUID alloc]initWithUUIDString:UUIDADVERT];
-    // generate random numbers for the minor
     self.transmitBeaconRegion = [[CLBeaconRegion alloc]initWithProximityUUID:advertisingUUID major:1 minor:1 identifier:[[UIDevice currentDevice]name]];
     peripheralManager = [[CBPeripheralManager alloc]initWithDelegate:self queue:nil];
     beaconPeripheralData = [[NSDictionary alloc]init];
